@@ -59,6 +59,20 @@
                     {% endfor %}
                 </div>
             </div>
+            {% if current_user %}
+            <a href="{{ url_for('profile') }}" class="nav-link">
+                <i class="fa-solid fa-user"></i>
+                {{ current_user }}
+            </a>
+            <a href="{{ url_for('logout') }}" class="nav-link">
+                <i class="fa-solid fa-sign-out-alt"></i>
+            </a>
+            {% else %}
+            <a href="{{ url_for('login') }}" class="nav-link nav-login">
+                <i class="fa-solid fa-sign-in-alt"></i>
+                Login
+            </a>
+            {% endif %}
         </div>
     </nav>
     <main class="main-content">

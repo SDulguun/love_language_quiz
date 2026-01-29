@@ -17,6 +17,12 @@ from display import (
     get_all_languages
 )
 from themes import get_theme, get_all_themes
+from auth import (
+    register_user,
+    authenticate_user,
+    add_quiz_result,
+    get_user_history
+)
 
 app = Flask(__name__)
 app.secret_key = "love-language-quiz-secret-key"
@@ -29,7 +35,8 @@ def inject_globals():
     return {
         "current_theme": get_theme(theme_name),
         "all_themes": get_all_themes(),
-        "theme_name": theme_name
+        "theme_name": theme_name,
+        "current_user": session.get("user")
     }
 
 
@@ -54,10 +61,65 @@ def set_theme(theme_name):
     return redirect(request.referrer or url_for("home"))
 
 
+# Authentication routes
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    """Handle user login."""
+    if request.method == "POST":
+        username = request.form.get("username", "").strip()
+        password = request.form.get("password", "")
+
+        if authenticate_user(username, password):
+            session["user"] = username
+            return redirect(url_for("home"))
+        return render_template("login.html", error="Invalid username or password")
+
+    return render_template("login.html")
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    """Handle user registration."""
+    if request.method == "POST":
+        username = request.form.get("username", "").strip()
+        password = request.form.get("password", "")
+
+        success, message = register_user(username, password)
+        if success:
+            session["user"] = username
+            return redirect(url_for("home"))
+        return render_template("register.html", error=message)
+
+    return render_template("register.html")
+
+
+@app.route("/logout")
+def logout():
+    """Log out the current user."""
+    session.pop("user", None)
+    return redirect(url_for("home"))
+
+
+@app.route("/profile")
+def profile():
+    """Display user profile with quiz history."""
+    if "user" not in session:
+        return redirect(url_for("login"))
+
+    username = session["user"]
+    history = get_user_history(username)
+    return render_template("profile.html", user=username, history=history)
+
+
+# Quiz routes
 @app.route("/start", methods=["POST"])
 def start_quiz():
     """Start a new quiz."""
-    session["name"] = request.form.get("name", "Friend")
+    # Use logged in username if available, otherwise use form input
+    if "user" in session:
+        session["name"] = session["user"]
+    else:
+        session["name"] = request.form.get("name", "Friend")
     session["context"] = request.form.get("context", "romantic")
     session["answers"] = []
     session["current"] = 0
@@ -138,6 +200,7 @@ def result():
     """Display the quiz results."""
     answers = session.get("answers", [])
     name = session.get("name", "Friend")
+    user = session.get("user")
     theme = session.get("theme", "peach")
 
     if not answers:
@@ -154,13 +217,19 @@ def result():
     # Save to public results
     save_result(name, language_name, scores=scores, icon=get_language_icon(dominant))
 
-    # Clear quiz data but keep theme
+    # Save to user history if logged in
+    if user:
+        add_quiz_result(user, language_name, scores)
+
+    # Clear quiz data but keep user and theme
     session.pop("answers", None)
     session.pop("current", None)
     session.pop("name", None)
     session.pop("context", None)
     session.pop("answer_counts", None)
     session["theme"] = theme
+    if user:
+        session["user"] = user
 
     # Calculate total answers for percentage bars
     total_answers = sum(scores.values())

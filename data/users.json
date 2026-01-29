@@ -1,0 +1,108 @@
+{
+  "Duku": {
+    "password": "5a3c3de68898d8ce4a622f223d3e51be002afba3bbadbddc46233affa86515be",
+    "created": "2026-01-28",
+    "quiz_history": [
+      {
+        "result": "Receiving Gifts",
+        "scores": {
+          "words_of_affirmation": 4,
+          "quality_time": 4,
+          "receiving_gifts": 5,
+          "acts_of_service": 4,
+          "physical_touch": 1
+        },
+        "date": "2026-01-29 00:19"
+      },
+      {
+        "result": "Physical Touch",
+        "scores": {
+          "words_of_affirmation": 4,
+          "quality_time": 3,
+          "receiving_gifts": 2,
+          "acts_of_service": 4,
+          "physical_touch": 5
+        },
+        "date": "2026-01-29 00:25"
+      },
+      {
+        "result": "Physical Touch",
+        "scores": {
+          "words_of_affirmation": 4,
+          "quality_time": 3,
+          "receiving_gifts": 2,
+          "acts_of_service": 4,
+          "physical_touch": 5
+        },
+        "date": "2026-01-29 00:29"
+      },
+      {
+        "result": "Words of Affirmation",
+        "scores": {
+          "words_of_affirmation": 4,
+          "quality_time": 3,
+          "receiving_gifts": 2,
+          "acts_of_service": 2,
+          "physical_touch": 4
+        },
+        "date": "2026-01-29 00:32"
+      },
+      {
+        "result": "Physical Touch",
+        "scores": {
+          "words_of_affirmation": 4,
+          "quality_time": 4,
+          "receiving_gifts": 2,
+          "acts_of_service": 3,
+          "physical_touch": 5
+        },
+        "date": "2026-01-29 00:39"
+      },
+      {
+        "result": "Acts of Service",
+        "scores": {
+          "words_of_affirmation": 3,
+          "quality_time": 2,
+          "receiving_gifts": 3,
+          "acts_of_service": 5,
+          "physical_touch": 5
+        },
+        "date": "2026-01-29 08:04"
+      },
+      {
+        "result": "Physical Touch",
+        "scores": {
+          "words_of_affirmation": 5,
+          "quality_time": 2,
+          "receiving_gifts": 2,
+          "acts_of_service": 5,
+          "physical_touch": 6
+        },
+        "date": "2026-01-29 08:08"
+      },
+      {
+        "result": "Words of Affirmation",
+        "scores": {
+          "words_of_affirmation": 4,
+          "quality_time": 3,
+          "receiving_gifts": 1,
+          "acts_of_service": 3,
+          "physical_touch": 4
+        },
+        "date": "2026-01-29 08:11"
+      },
+      {
+        "result": "Receiving Gifts",
+        "scores": {
+          "words_of_affirmation": 2,
+          "quality_time": 3,
+          "receiving_gifts": 4,
+          "acts_of_service": 4,
+          "physical_touch": 2
+        },
+        "date": "2026-01-29 08:14"
+      }
+    ],
+    "theme_preference": "peach"
+  }
+}
