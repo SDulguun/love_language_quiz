@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container compat-container">
+    <div class="fade-in-up" style="animation-delay: 0.1s;">
+        <div class="compat-header-icon">
+            <i class="fa-solid fa-people-arrows"></i>
+        </div>
+        <h1>Compatibility Check</h1>
+        <p class="subtitle">Compare your love language with someone else</p>
+    </div>
+
+    {% if error %}
+    <div class="error-message fade-in-up" style="animation-delay: 0.2s;">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        {{ error }}
+    </div>
+    {% endif %}
+
+    {% if not my_result %}
+    <div class="fade-in-up" style="animation-delay: 0.2s;">
+        <div class="compat-notice">
+            <i class="fa-solid fa-info-circle"></i>
+            <p>You need to take a quiz first before comparing results.</p>
+        </div>
+        <a href="{{ url_for('home') }}" class="btn">
+            <i class="fa-solid fa-play"></i>
+            Take Quiz
+        </a>
+    </div>
+    {% else %}
+
+    <!-- Search Form -->
+    <form action="{{ url_for('compatibility') }}" method="POST" class="fade-in-up" style="animation-delay: 0.2s;">
+        <div class="compat-search">
+            <input type="text" name="partner" class="name-input" placeholder="Enter their username" value="{{ partner_name if compared else '' }}" required>
+            <button type="submit" class="btn">
+                <i class="fa-solid fa-heart-circle-check"></i>
+                Compare
+            </button>
+        </div>
+    </form>
+
+    {% if compared %}
+    <!-- Compatibility Score -->
+    <div class="fade-in-up" style="animation-delay: 0.3s;">
+        <div class="compat-score-badge">
+            <div class="compat-score-circle">
+                <span class="compat-score-number">{{ compat_score }}%</span>
+                <span class="compat-score-label">Match</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Side by Side Cards -->
+    <div class="compat-cards fade-in-up" style="animation-delay: 0.4s;">
+        <div class="compat-card">
+            <div class="compat-card-icon">
+                <i class="fa-solid fa-{{ my_lang_icon }}"></i>
+            </div>
+            <div class="compat-card-user">{{ my_name }}</div>
+            <div class="compat-card-lang">{{ my_lang_name }}</div>
+            <div class="compat-card-scores">
+                {% for s in my_display %}
+                <div class="compat-mini-row">
+                    <span class="compat-mini-name"><i class="fa-solid fa-{{ s.icon }}"></i></span>
+                    <div class="compat-mini-bar-bg">
+                        <div class="compat-mini-bar" style="width: {{ s.percent }}%"></div>
+                    </div>
+                    <span class="compat-mini-val">{{ s.score }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="compat-vs">VS</div>
+        <div class="compat-card">
+            <div class="compat-card-icon partner-icon">
+                <i class="fa-solid fa-{{ partner_lang_icon }}"></i>
+            </div>
+            <div class="compat-card-user">{{ partner_name }}</div>
+            <div class="compat-card-lang">{{ partner_lang_name }}</div>
+            <div class="compat-card-scores">
+                {% for s in partner_display %}
+                <div class="compat-mini-row">
+                    <span class="compat-mini-name"><i class="fa-solid fa-{{ s.icon }}"></i></span>
+                    <div class="compat-mini-bar-bg">
+                        <div class="compat-mini-bar partner-bar" style="width: {{ s.percent }}%"></div>
+                    </div>
+                    <span class="compat-mini-val">{{ s.score }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Radar Chart -->
+    <div class="chart-container fade-in-up" style="animation-delay: 0.5s; max-width: 400px;">
+        <div class="chart-title">
+            <i class="fa-solid fa-chart-radar"></i>
+            Score Comparison
+        </div>
+        <canvas id="radarChart"></canvas>
+    </div>
+
+    <!-- Compatibility Insight -->
+    <div class="insight-section fade-in-up" style="animation-delay: 0.6s;">
+        <div class="insight-title">
+            <i class="fa-solid fa-heart-circle-bolt"></i>
+            {{ compat_tip.title }}
+        </div>
+        <p class="insight-text">{{ compat_tip.insight }}</p>
+    </div>
+
+    <div class="tips-section fade-in-up" style="animation-delay: 0.7s;">
+        <div class="tips-title">
+            <i class="fa-solid fa-lightbulb"></i>
+            Tip for You Two
+        </div>
+        <p class="insight-text">{{ compat_tip.tip }}</p>
+    </div>
+
+    <div class="fade-in-up" style="animation-delay: 0.8s; margin-top: 24px;">
+        <a href="{{ url_for('home') }}" class="btn">
+            <i class="fa-solid fa-rotate"></i>
+            Retake Quiz
+        </a>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('radarChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: {{ languages | tojson }},
+                datasets: [
+                    {
+                        label: '{{ my_name }}',
+                        data: {{ my_values | tojson }},
+                        backgroundColor: 'rgba(255, 107, 138, 0.2)',
+                        borderColor: 'rgba(255, 107, 138, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(255, 107, 138, 1)',
+                        pointRadius: 4
+                    },
+                    {
+                        label: '{{ partner_name }}',
+                        data: {{ partner_values | tojson }},
+                        backgroundColor: 'rgba(130, 120, 220, 0.2)',
+                        borderColor: 'rgba(130, 120, 220, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(130, 120, 220, 1)',
+                        pointRadius: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1,
+                            font: { family: 'Quicksand', size: 11 }
+                        },
+                        pointLabels: {
+                            font: { family: 'Quicksand', size: 11, weight: '600' },
+                            color: '#2d3436'
+                        },
+                        grid: { color: 'rgba(0,0,0,0.08)' },
+                        angleLines: { color: 'rgba(0,0,0,0.08)' }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            font: { family: 'Quicksand', size: 13, weight: '600' },
+                            usePointStyle: true,
+                            padding: 20
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+    {% endif %}
+
+    {% endif %}
+</div>
+{% endblock %}

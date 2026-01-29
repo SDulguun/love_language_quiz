@@ -47,6 +47,12 @@
                 <i class="fa-solid fa-book-open"></i>
                 Learn
             </a>
+            {% if current_user %}
+            <a href="{{ url_for('compatibility') }}" class="nav-link">
+                <i class="fa-solid fa-people-arrows"></i>
+                Compare
+            </a>
+            {% endif %}
             <div class="theme-dropdown">
                 <button class="theme-btn">
                     <i class="fa-solid fa-palette"></i>

@@ -257,6 +257,95 @@ LANGUAGE_INFO = {
 }
 
 
+COMPATIBILITY_TIPS = {
+    frozenset(["words_of_affirmation", "words_of_affirmation"]): {
+        "title": "A Symphony of Words",
+        "insight": "You both thrive on verbal expression. Your relationship can be incredibly affirming since you naturally speak the same language. Be mindful that harsh words can cut twice as deep when both partners are sensitive to them.",
+        "tip": "Make it a daily ritual to share specific compliments with each other."
+    },
+    frozenset(["words_of_affirmation", "quality_time"]): {
+        "title": "Deep Conversations Await",
+        "insight": "One of you loves hearing heartfelt words while the other craves undivided attention. The great news is that meaningful conversations satisfy both needs at once.",
+        "tip": "Set aside phone-free time for genuine, expressive conversations."
+    },
+    frozenset(["words_of_affirmation", "receiving_gifts"]): {
+        "title": "Thoughtful Expressions",
+        "insight": "Words and gifts are both ways of showing someone you thought of them. Pairing a heartfelt note with a small gift can make both of you feel deeply loved.",
+        "tip": "Write personal notes to accompany gifts — the words make the gift more meaningful."
+    },
+    frozenset(["words_of_affirmation", "acts_of_service"]): {
+        "title": "Say It and Show It",
+        "insight": "One speaks love, the other shows it through action. Together you cover both sides of the coin. The key is recognizing that both forms of expression carry equal weight.",
+        "tip": "When you do something helpful, explain why you did it. When you appreciate an action, say it out loud."
+    },
+    frozenset(["words_of_affirmation", "physical_touch"]): {
+        "title": "Words Meet Warmth",
+        "insight": "Verbal affirmation paired with physical closeness creates a powerful emotional bond. A hug combined with 'I love you' can be the ultimate expression of care.",
+        "tip": "Whisper words of appreciation during embraces to connect on both levels."
+    },
+    frozenset(["quality_time", "quality_time"]): {
+        "title": "Fully Present Together",
+        "insight": "You both value undivided attention above all else. Your connection deepens naturally when you are together. Just make sure you also maintain healthy independence.",
+        "tip": "Create a weekly tradition that belongs to just the two of you."
+    },
+    frozenset(["quality_time", "receiving_gifts"]): {
+        "title": "Moments and Mementos",
+        "insight": "One values shared experiences while the other treasures tangible reminders of love. Creating memories together and bringing home small souvenirs satisfies both.",
+        "tip": "Plan experiences together and keep small keepsakes from your shared adventures."
+    },
+    frozenset(["quality_time", "acts_of_service"]): {
+        "title": "Together in Action",
+        "insight": "One craves presence, the other appreciates helpful deeds. Doing tasks together — cooking, cleaning, or running errands side by side — beautifully merges both languages.",
+        "tip": "Turn everyday chores into quality time by doing them as a team."
+    },
+    frozenset(["quality_time", "physical_touch"]): {
+        "title": "Close and Connected",
+        "insight": "Presence and touch naturally complement each other. Simply being physically close while spending time together fulfills both of your deepest needs.",
+        "tip": "Cuddle during movies, hold hands on walks — physical closeness during shared time is your sweet spot."
+    },
+    frozenset(["receiving_gifts", "receiving_gifts"]): {
+        "title": "Thoughtful Gift Givers",
+        "insight": "You both understand the power of a well-chosen gift. You naturally know how to make each other feel special through thoughtful presents and surprises.",
+        "tip": "Keep running lists of things you each mention wanting so you always have ideas ready."
+    },
+    frozenset(["receiving_gifts", "acts_of_service"]): {
+        "title": "Giving in Every Way",
+        "insight": "One shows love through thoughtful gifts, the other through helpful actions. Both are generous at heart. Recognizing that a cooked meal is as meaningful as a wrapped present is key.",
+        "tip": "Appreciate each other's unique way of giving — a helpful deed is their version of a gift."
+    },
+    frozenset(["receiving_gifts", "physical_touch"]): {
+        "title": "Tangible Love",
+        "insight": "Both of you appreciate concrete, tangible expressions of love — whether a gift in hand or a hand to hold. You both need love you can feel and see.",
+        "tip": "Hand-deliver gifts personally with a warm embrace for maximum impact."
+    },
+    frozenset(["acts_of_service", "acts_of_service"]): {
+        "title": "Actions Speak Loudest",
+        "insight": "You both believe that love is a verb. Your relationship runs smoothly when you share the load and show care through helpful deeds. Just be careful not to keep score.",
+        "tip": "Focus on helping each other willingly rather than tracking who did what."
+    },
+    frozenset(["acts_of_service", "physical_touch"]): {
+        "title": "Caring Hands",
+        "insight": "One feels loved through helpful actions, the other through physical affection. A back rub after a long day or holding their hand while helping with a task bridges both beautifully.",
+        "tip": "Add a physical touch element to acts of service — a hug after cooking dinner, a pat on the back while helping."
+    },
+    frozenset(["physical_touch", "physical_touch"]): {
+        "title": "The Power of Touch",
+        "insight": "You both feel most connected through physical closeness. Your relationship is naturally warm and affectionate. Physical distance can be especially challenging for you both.",
+        "tip": "Establish daily touch rituals — greeting hugs, goodnight embraces, and casual physical closeness throughout the day."
+    }
+}
+
+
+def get_compatibility_tip(lang1, lang2):
+    """Get compatibility insight for a pair of love languages."""
+    key = frozenset([lang1, lang2])
+    return COMPATIBILITY_TIPS.get(key, {
+        "title": "A Unique Combination",
+        "insight": "Every combination of love languages has its own strengths. The key is understanding and respecting how the other person gives and receives love.",
+        "tip": "Take time to learn what makes the other person feel most appreciated."
+    })
+
+
 def get_language_name(key):
     """Get display name for a love language."""
     return LANGUAGE_INFO.get(key, {}).get("name", key)

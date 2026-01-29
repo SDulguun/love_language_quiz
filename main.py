@@ -120,6 +120,7 @@ def start_quiz():
         session["name"] = session["user"]
     else:
         session["name"] = request.form.get("name", "Friend")
+
     session["context"] = request.form.get("context", "romantic")
     session["answers"] = []
     session["current"] = 0
@@ -286,6 +287,81 @@ def share(share_id):
         date=entry.get("date", ""),
         share_id=share_id
     )
+
+
+@app.route("/compatibility", methods=["GET", "POST"])
+def compatibility():
+    """Compare love languages with another user."""
+    if "user" not in session:
+        return redirect(url_for("login"))
+
+    username = session["user"]
+    my_result = get_user_latest_result(username)
+
+    if request.method == "POST":
+        partner = request.form.get("partner", "").strip()
+
+        if not partner:
+            return render_template("compatibility.html", error="Please enter a username.", my_result=my_result)
+        if partner == username:
+            return render_template("compatibility.html", error="You can't compare with yourself!", my_result=my_result)
+        if not user_exists(partner):
+            return render_template("compatibility.html", error=f"User '{partner}' not found.", my_result=my_result)
+
+        partner_result = get_user_latest_result(partner)
+        if not partner_result:
+            return render_template("compatibility.html", error=f"'{partner}' hasn't taken any quizzes yet.", my_result=my_result)
+        if not my_result:
+            return render_template("compatibility.html", error="You haven't taken a quiz yet! Take one first.", my_result=my_result)
+
+        # Calculate compatibility score using cosine similarity
+        my_scores = my_result["scores"]
+        partner_scores = partner_result["scores"]
+        languages = ["words_of_affirmation", "quality_time", "receiving_gifts", "acts_of_service", "physical_touch"]
+
+        my_vec = [my_scores.get(l, 0) for l in languages]
+        p_vec = [partner_scores.get(l, 0) for l in languages]
+
+        dot = sum(a * b for a, b in zip(my_vec, p_vec))
+        mag_a = sum(a * a for a in my_vec) ** 0.5
+        mag_b = sum(b * b for b in p_vec) ** 0.5
+        cosine_sim = dot / (mag_a * mag_b) if mag_a and mag_b else 0
+        compat_score = round(cosine_sim * 100)
+
+        # Get dominant languages
+        my_dominant = max(my_scores, key=my_scores.get)
+        partner_dominant = max(partner_scores, key=partner_scores.get)
+
+        # Get compatibility insight
+        compat_tip = get_compatibility_tip(my_dominant, partner_dominant)
+
+        # Format scores for radar chart
+        my_display = format_scores_for_display(my_scores)
+        partner_display = format_scores_for_display(partner_scores)
+
+        return render_template(
+            "compatibility.html",
+            my_result=my_result,
+            partner_result=partner_result,
+            partner_name=partner,
+            my_name=username,
+            compat_score=compat_score,
+            compat_tip=compat_tip,
+            my_dominant=my_dominant,
+            partner_dominant=partner_dominant,
+            my_lang_name=get_language_name(my_dominant),
+            partner_lang_name=get_language_name(partner_dominant),
+            my_lang_icon=get_language_icon(my_dominant),
+            partner_lang_icon=get_language_icon(partner_dominant),
+            my_display=my_display,
+            partner_display=partner_display,
+            languages=[get_language_name(l) for l in languages],
+            my_values=[my_scores.get(l, 0) for l in languages],
+            partner_values=[partner_scores.get(l, 0) for l in languages],
+            compared=True
+        )
+
+    return render_template("compatibility.html", my_result=my_result)
 
 
 if __name__ == "__main__":

@@ -78,3 +78,15 @@ def get_user_history(username):
     """Get user's quiz history."""
     user = get_user(username)
     return user.get("quiz_history", []) if user else []
+
+
+def user_exists(username):
+    """Check if a username exists."""
+    users = load_users()
+    return username in users
+
+
+def get_user_latest_result(username):
+    """Get a user's most recent quiz result, or None."""
+    history = get_user_history(username)
+    return history[-1] if history else None
