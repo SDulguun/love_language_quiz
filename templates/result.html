@@ -68,8 +68,50 @@
         </ul>
     </div>
 
+    <div class="share-section fade-in-up" style="animation-delay: 0.9s">
+        <p class="share-label">Share your result</p>
+        <div class="share-buttons">
+            <a href="https://twitter.com/intent/tweet?text=I%20just%20discovered%20my%20love%20language%20is%20{{ language|urlencode }}!%20Take%20the%20quiz%20to%20find%20yours!%20{{ request.url_root }}share/{{ share_id }}" target="_blank" class="share-btn twitter" title="Share on Twitter">
+                <i class="fa-brands fa-twitter"></i>
+            </a>
+            <button class="share-btn copy" onclick="copyShareLink()" title="Copy share link">
+                <i class="fa-solid fa-link"></i>
+            </button>
+            <button class="share-btn download" onclick="downloadCard()" title="Download as image">
+                <i class="fa-solid fa-download"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Hidden card for image download -->
+    <div id="shareCard" class="share-card-capture" style="position: absolute; left: -9999px; top: 0;">
+        <div class="share-card-inner">
+            <div class="share-card-header">
+                <i class="fa-solid fa-heart"></i>
+                <span>Love Language Quiz</span>
+            </div>
+            <div class="share-card-icon-wrap">
+                <i class="fa-solid fa-{{ icon }}"></i>
+            </div>
+            <p class="share-card-label">{{ name }}'s love language is</p>
+            <h2 class="share-card-language">{{ language }}</h2>
+            <div class="share-card-scores">
+                {% for item in scores %}
+                <div class="share-card-score-row">
+                    <span class="share-card-score-name">{{ item.name }}</span>
+                    <div class="share-card-bar-bg">
+                        <div class="share-card-bar" style="width: {{ item.percent }}%; background: {{ ['#ff6b8a','#ff8e72','#ffb6c1','#ffdab9','#dda0dd'][loop.index0 % 5] }};"></div>
+                    </div>
+                    <span class="share-card-score-val">{{ item.percent }}%</span>
+                </div>
+                {% endfor %}
+            </div>
+            <p class="share-card-footer">Take the quiz at lovelanguagequiz.com</p>
+        </div>
+    </div>
+
     <!-- Doughnut Chart -->
-    <div class="chart-container fade-in-up" style="animation-delay: 0.9s">
+    <div class="chart-container fade-in-up" style="animation-delay: 1.0s">
         <p class="chart-title">
             <i class="fa-solid fa-chart-pie"></i>
             Your Love Language Breakdown
@@ -87,7 +129,7 @@
         </div>
     </div>
 
-    <div class="scores-section fade-in-up" style="animation-delay: 1.0s">
+    <div class="scores-section fade-in-up" style="animation-delay: 1.1s">
         <h3 class="scores-title">
             <i class="fa-solid fa-chart-simple"></i>
             All Your Scores
@@ -106,13 +148,44 @@
         {% endfor %}
     </div>
 
-    <a href="{{ url_for('home') }}" class="btn fade-in-up" style="animation-delay: 1.1s">
+    <a href="{{ url_for('home') }}" class="btn fade-in-up" style="animation-delay: 1.2s">
         <i class="fa-solid fa-rotate-left"></i>
         Take Again
     </a>
 </div>
 
 <script>
+function copyShareLink() {
+    const url = "{{ request.url_root }}share/{{ share_id }}";
+    navigator.clipboard.writeText(url).then(() => {
+        const btn = document.querySelector('.share-btn.copy');
+        btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+        setTimeout(() => {
+            btn.innerHTML = '<i class="fa-solid fa-link"></i>';
+        }, 2000);
+    });
+}
+
+function downloadCard() {
+    const card = document.getElementById('shareCard');
+    card.style.position = 'fixed';
+    card.style.left = '0';
+    card.style.top = '0';
+    card.style.zIndex = '-1';
+
+    html2canvas(card, { scale: 2, backgroundColor: null, useCORS: true }).then(canvas => {
+        card.style.position = 'absolute';
+        card.style.left = '-9999px';
+        card.style.zIndex = '';
+
+        const link = document.createElement('a');
+        link.download = 'my-love-language.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    });
+}
+
+
 function launchConfetti() {
     const duration = 3000;
     const end = Date.now() + duration;

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container share-page">
+    <!-- Shareable Card -->
+    <div id="shareCardPublic" class="share-card-capture share-card-visible">
+        <div class="share-card-inner">
+            <div class="share-card-header">
+                <i class="fa-solid fa-heart"></i>
+                <span>Love Language Quiz</span>
+            </div>
+            <div class="share-card-icon-wrap">
+                <i class="fa-solid fa-{{ icon }}"></i>
+            </div>
+            <p class="share-card-label">{{ name }}'s love language is</p>
+            <h2 class="share-card-language">{{ language }}</h2>
+            <div class="share-card-scores">
+                {% for item in scores %}
+                <div class="share-card-score-row">
+                    <span class="share-card-score-name">{{ item.name }}</span>
+                    <div class="share-card-bar-bg">
+                        <div class="share-card-bar" style="width: {{ item.percent }}%; background: {{ ['#ff6b8a','#ff8e72','#ffb6c1','#ffdab9','#dda0dd'][loop.index0 % 5] }};"></div>
+                    </div>
+                    <span class="share-card-score-val">{{ item.percent }}%</span>
+                </div>
+                {% endfor %}
+            </div>
+            <p class="share-card-footer">{{ date }}</p>
+        </div>
+    </div>
+
+    <div class="share-actions fade-in-up" style="animation-delay: 0.3s;">
+        <button class="btn" onclick="downloadPublicCard()">
+            <i class="fa-solid fa-download"></i>
+            Download Image
+        </button>
+        <a href="{{ url_for('home') }}" class="btn share-cta-btn">
+            <i class="fa-solid fa-play"></i>
+            Take the Quiz
+        </a>
+    </div>
+</div>
+
+<script>
+function downloadPublicCard() {
+    const card = document.getElementById('shareCardPublic');
+    html2canvas(card, { scale: 2, backgroundColor: null, useCORS: true }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = '{{ name }}-love-language.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    });
+}
+</script>
+{% endblock %}

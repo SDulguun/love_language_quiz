@@ -3,7 +3,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from questions import load_questions
 from scoring import calculate_scores, get_dominant_language
-from storage import save_result, get_recent_results
+from storage import save_result, get_recent_results, get_result_by_share_id
 from display import (
     get_language_name,
     get_language_icon,
@@ -215,7 +215,7 @@ def result():
     primary_key, secondary_key = get_top_two(scores)
 
     # Save to public results
-    save_result(name, language_name, scores=scores, icon=get_language_icon(dominant))
+    share_id = save_result(name, language_name, scores=scores, icon=get_language_icon(dominant))
 
     # Save to user history if logged in
     if user:
@@ -260,7 +260,31 @@ def result():
         secondary_name=get_language_name(secondary_key) if secondary_key else "",
         secondary_icon=get_language_icon(secondary_key) if secondary_key else "",
         scores=format_scores_for_display(scores),
-        total_answers=total_answers
+        total_answers=total_answers,
+        share_id=share_id
+    )
+
+
+@app.route("/share/<share_id>")
+def share(share_id):
+    """Display a public shareable results card."""
+    entry = get_result_by_share_id(share_id)
+    if not entry:
+        return redirect(url_for("home"))
+
+    scores = entry.get("scores", {})
+    total = sum(scores.values()) if scores else 1
+    display_scores = format_scores_for_display(scores) if scores else []
+
+    return render_template(
+        "share.html",
+        name=entry["name"],
+        language=entry["result"],
+        icon=entry.get("icon", "heart"),
+        scores=display_scores,
+        total_answers=total,
+        date=entry.get("date", ""),
+        share_id=share_id
     )
 
 

@@ -1,1 +1,202 @@
-[]
+[
+  {
+    "name": "Dulguun",
+    "result": "Words of Affirmation",
+    "date": "2026-01-28 00:37"
+  },
+  {
+    "name": "Tuguldur",
+    "result": "Quality Time",
+    "date": "2026-01-28 16:01"
+  },
+  {
+    "name": "T",
+    "result": "Quality Time",
+    "date": "2026-01-28 16:06"
+  },
+  {
+    "name": "D",
+    "result": "Words of Affirmation",
+    "date": "2026-01-28 16:07"
+  },
+  {
+    "name": "T",
+    "result": "Physical Touch",
+    "date": "2026-01-28 19:19"
+  },
+  {
+    "name": "D",
+    "result": "Acts of Service",
+    "date": "2026-01-28 19:22"
+  },
+  {
+    "name": "T",
+    "result": "Physical Touch",
+    "date": "2026-01-28 19:34"
+  },
+  {
+    "name": "F",
+    "result": "Quality Time",
+    "date": "2026-01-28 19:44"
+  },
+  {
+    "name": "D",
+    "result": "Words of Affirmation",
+    "date": "2026-01-28 19:47"
+  },
+  {
+    "name": "D",
+    "result": "Quality Time",
+    "date": "2026-01-28 19:48"
+  },
+  {
+    "name": "T",
+    "result": "Quality Time",
+    "date": "2026-01-28 19:51"
+  },
+  {
+    "name": "D",
+    "result": "Receiving Gifts",
+    "date": "2026-01-29 00:05"
+  },
+  {
+    "name": "D",
+    "result": "Receiving Gifts",
+    "date": "2026-01-29 00:05"
+  },
+  {
+    "name": "Duku",
+    "result": "Receiving Gifts",
+    "date": "2026-01-29 00:19"
+  },
+  {
+    "name": "Duku",
+    "result": "Physical Touch",
+    "date": "2026-01-29 00:25"
+  },
+  {
+    "name": "Duku",
+    "result": "Physical Touch",
+    "date": "2026-01-29 00:29"
+  },
+  {
+    "name": "Duku",
+    "result": "Words of Affirmation",
+    "date": "2026-01-29 00:32"
+  },
+  {
+    "name": "Duku",
+    "result": "Physical Touch",
+    "date": "2026-01-29 00:39"
+  },
+  {
+    "name": "Duku",
+    "result": "Acts of Service",
+    "date": "2026-01-29 08:04"
+  },
+  {
+    "name": "Duku",
+    "result": "Physical Touch",
+    "date": "2026-01-29 08:08"
+  },
+  {
+    "name": "Duku",
+    "result": "Words of Affirmation",
+    "date": "2026-01-29 08:11"
+  },
+  {
+    "name": "Duku",
+    "result": "Receiving Gifts",
+    "date": "2026-01-29 08:14"
+  },
+  {
+    "name": "D",
+    "result": "Words of Affirmation",
+    "date": "2026-01-29 13:48"
+  },
+  {
+    "name": "D",
+    "result": "Acts of Service",
+    "date": "2026-01-29 13:50"
+  },
+  {
+    "name": "D",
+    "result": "Quality Time",
+    "date": "2026-01-29 13:52"
+  },
+  {
+    "name": "D",
+    "result": "Quality Time",
+    "date": "2026-01-29 13:53"
+  },
+  {
+    "name": "D",
+    "result": "Quality Time",
+    "date": "2026-01-29 13:57",
+    "share_id": "7f452a54",
+    "scores": {
+      "words_of_affirmation": 3,
+      "quality_time": 5,
+      "receiving_gifts": 4,
+      "acts_of_service": 2,
+      "physical_touch": 1
+    },
+    "icon": "clock"
+  },
+  {
+    "name": "D",
+    "result": "Words of Affirmation",
+    "date": "2026-01-29 14:03",
+    "share_id": "fed2eb4a",
+    "scores": {
+      "words_of_affirmation": 5,
+      "quality_time": 1,
+      "receiving_gifts": 4,
+      "acts_of_service": 5,
+      "physical_touch": 4
+    },
+    "icon": "comment-dots"
+  },
+  {
+    "name": "D",
+    "result": "Words of Affirmation",
+    "date": "2026-01-29 14:13",
+    "share_id": "b2f9fb17",
+    "scores": {
+      "words_of_affirmation": 6,
+      "quality_time": 2,
+      "receiving_gifts": 4,
+      "acts_of_service": 5,
+      "physical_touch": 3
+    },
+    "icon": "comment-dots"
+  },
+  {
+    "name": "D",
+    "result": "Receiving Gifts",
+    "date": "2026-01-29 14:15",
+    "share_id": "a5f9bed7",
+    "scores": {
+      "words_of_affirmation": 3,
+      "quality_time": 4,
+      "receiving_gifts": 5,
+      "acts_of_service": 2,
+      "physical_touch": 1
+    },
+    "icon": "gift"
+  },
+  {
+    "name": "D",
+    "result": "Receiving Gifts",
+    "date": "2026-01-29 14:20",
+    "share_id": "de9dd3b5",
+    "scores": {
+      "words_of_affirmation": 3,
+      "quality_time": 3,
+      "receiving_gifts": 5,
+      "acts_of_service": 3,
+      "physical_touch": 1
+    },
+    "icon": "gift"
+  }
+]
