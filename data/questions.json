@@ -1,1 +1,739 @@
-[]
+{
+    "romantic": [
+        {
+            "question": "When your partner does something well, you prefer to:",
+            "options": {
+                "A": "Tell them how proud you are of them",
+                "B": "Spend quality time celebrating together"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "quality_time"}
+        },
+        {
+            "question": "You feel most loved when your partner:",
+            "options": {
+                "A": "Gives you a thoughtful gift",
+                "B": "Helps you with chores without being asked"
+            },
+            "scores": {"A": "receiving_gifts", "B": "acts_of_service"}
+        },
+        {
+            "question": "After a long day, you would rather your partner:",
+            "options": {
+                "A": "Give you a massage or cuddle",
+                "B": "Tell you how much they appreciate you"
+            },
+            "scores": {"A": "physical_touch", "B": "words_of_affirmation"}
+        },
+        {
+            "question": "On a date night, what matters most?",
+            "options": {
+                "A": "Having their full, undivided attention",
+                "B": "Receiving a surprise gift or flowers"
+            },
+            "scores": {"A": "quality_time", "B": "receiving_gifts"}
+        },
+        {
+            "question": "You feel cared for when your partner:",
+            "options": {
+                "A": "Takes care of errands for you",
+                "B": "Holds your hand or stays close to you"
+            },
+            "scores": {"A": "acts_of_service", "B": "physical_touch"}
+        },
+        {
+            "question": "What means more to you?",
+            "options": {
+                "A": "Hearing 'I love you' frequently",
+                "B": "Getting a meaningful anniversary gift"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "receiving_gifts"}
+        },
+        {
+            "question": "The perfect evening with your partner includes:",
+            "options": {
+                "A": "Deep conversation just the two of you",
+                "B": "Them cooking your favorite meal"
+            },
+            "scores": {"A": "quality_time", "B": "acts_of_service"}
+        },
+        {
+            "question": "Which makes you feel more connected?",
+            "options": {
+                "A": "A long, warm hug",
+                "B": "Words of encouragement and support"
+            },
+            "scores": {"A": "physical_touch", "B": "words_of_affirmation"}
+        },
+        {
+            "question": "You feel special when your partner:",
+            "options": {
+                "A": "Remembers to buy your favorite snack",
+                "B": "Fixes something that was bothering you"
+            },
+            "scores": {"A": "receiving_gifts", "B": "acts_of_service"}
+        },
+        {
+            "question": "What would you prefer?",
+            "options": {
+                "A": "Cuddling while watching a movie",
+                "B": "A weekend getaway, just the two of you"
+            },
+            "scores": {"A": "physical_touch", "B": "quality_time"}
+        },
+        {
+            "question": "When feeling down, you want your partner to:",
+            "options": {
+                "A": "Sit and listen to you without distractions",
+                "B": "Hold you close and comfort you physically"
+            },
+            "scores": {"A": "quality_time", "B": "physical_touch"}
+        },
+        {
+            "question": "On your birthday, you would most appreciate:",
+            "options": {
+                "A": "A heartfelt love letter",
+                "B": "A carefully chosen gift"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "receiving_gifts"}
+        },
+        {
+            "question": "You feel most valued when your partner:",
+            "options": {
+                "A": "Plans the entire date so you can relax",
+                "B": "Makes time for just the two of you"
+            },
+            "scores": {"A": "acts_of_service", "B": "quality_time"}
+        },
+        {
+            "question": "Which gesture means more?",
+            "options": {
+                "A": "A gentle touch on your face",
+                "B": "A surprise bouquet of flowers"
+            },
+            "scores": {"A": "physical_touch", "B": "receiving_gifts"}
+        },
+        {
+            "question": "You feel closest to your partner when they:",
+            "options": {
+                "A": "Tell you why they love you",
+                "B": "Do something thoughtful without being asked"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "acts_of_service"}
+        }
+    ],
+
+    "family": [
+        {
+            "question": "When a family member achieves something, you prefer they:",
+            "options": {
+                "A": "Tell you how much your support meant",
+                "B": "Spend time with you to celebrate"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "quality_time"}
+        },
+        {
+            "question": "You feel loved by your family when they:",
+            "options": {
+                "A": "Give you thoughtful gifts on special occasions",
+                "B": "Help you with tasks around the house"
+            },
+            "scores": {"A": "receiving_gifts", "B": "acts_of_service"}
+        },
+        {
+            "question": "After a tough day, you want your family to:",
+            "options": {
+                "A": "Give you a comforting hug",
+                "B": "Tell you they're proud of you"
+            },
+            "scores": {"A": "physical_touch", "B": "words_of_affirmation"}
+        },
+        {
+            "question": "Family gatherings feel best when:",
+            "options": {
+                "A": "Everyone puts phones away and talks",
+                "B": "Someone brings your favorite dish or treat"
+            },
+            "scores": {"A": "quality_time", "B": "receiving_gifts"}
+        },
+        {
+            "question": "You feel cared for when family members:",
+            "options": {
+                "A": "Offer to run errands or help out",
+                "B": "Greet you with warm hugs"
+            },
+            "scores": {"A": "acts_of_service", "B": "physical_touch"}
+        },
+        {
+            "question": "What means more from your family?",
+            "options": {
+                "A": "Hearing 'I'm proud of you'",
+                "B": "Receiving a meaningful keepsake"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "receiving_gifts"}
+        },
+        {
+            "question": "A perfect family day includes:",
+            "options": {
+                "A": "Quality conversation over a meal together",
+                "B": "Someone taking care of chores so you can relax"
+            },
+            "scores": {"A": "quality_time", "B": "acts_of_service"}
+        },
+        {
+            "question": "You feel connected to family through:",
+            "options": {
+                "A": "Physical affection like hugs",
+                "B": "Words of encouragement and support"
+            },
+            "scores": {"A": "physical_touch", "B": "words_of_affirmation"}
+        },
+        {
+            "question": "You feel appreciated when your family:",
+            "options": {
+                "A": "Remembers your favorite things",
+                "B": "Helps you when you're overwhelmed"
+            },
+            "scores": {"A": "receiving_gifts", "B": "acts_of_service"}
+        },
+        {
+            "question": "What would you prefer from family?",
+            "options": {
+                "A": "Sitting close together during movies",
+                "B": "Dedicated one-on-one time"
+            },
+            "scores": {"A": "physical_touch", "B": "quality_time"}
+        },
+        {
+            "question": "When you're stressed, you want family to:",
+            "options": {
+                "A": "Listen without distractions",
+                "B": "Comfort you with a hug"
+            },
+            "scores": {"A": "quality_time", "B": "physical_touch"}
+        },
+        {
+            "question": "On holidays, you most appreciate:",
+            "options": {
+                "A": "Heartfelt cards with personal messages",
+                "B": "Thoughtfully chosen presents"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "receiving_gifts"}
+        },
+        {
+            "question": "You feel valued when family:",
+            "options": {
+                "A": "Helps prepare for family events",
+                "B": "Plans activities you enjoy together"
+            },
+            "scores": {"A": "acts_of_service", "B": "quality_time"}
+        },
+        {
+            "question": "Which gesture from family means more?",
+            "options": {
+                "A": "A pat on the back or warm embrace",
+                "B": "A surprise gift 'just because'"
+            },
+            "scores": {"A": "physical_touch", "B": "receiving_gifts"}
+        },
+        {
+            "question": "You feel closest to family when they:",
+            "options": {
+                "A": "Express their love verbally",
+                "B": "Show love through helpful actions"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "acts_of_service"}
+        }
+    ],
+
+    "friend": [
+        {
+            "question": "When your friend succeeds, you prefer to:",
+            "options": {
+                "A": "Tell them how awesome they are",
+                "B": "Hang out and celebrate together"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "quality_time"}
+        },
+        {
+            "question": "You feel valued as a friend when they:",
+            "options": {
+                "A": "Remember your birthday with a gift",
+                "B": "Help you move or with a big task"
+            },
+            "scores": {"A": "receiving_gifts", "B": "acts_of_service"}
+        },
+        {
+            "question": "When you're having a bad day, you want friends to:",
+            "options": {
+                "A": "Give you a supportive hug",
+                "B": "Send encouraging messages"
+            },
+            "scores": {"A": "physical_touch", "B": "words_of_affirmation"}
+        },
+        {
+            "question": "Hanging out with friends is best when:",
+            "options": {
+                "A": "You have meaningful conversations",
+                "B": "They bring your favorite snacks"
+            },
+            "scores": {"A": "quality_time", "B": "receiving_gifts"}
+        },
+        {
+            "question": "You feel cared for when friends:",
+            "options": {
+                "A": "Offer to help without being asked",
+                "B": "Greet you with warm hugs"
+            },
+            "scores": {"A": "acts_of_service", "B": "physical_touch"}
+        },
+        {
+            "question": "What means more from a friend?",
+            "options": {
+                "A": "Hearing 'You're an amazing friend'",
+                "B": "Getting a thoughtful 'thinking of you' gift"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "receiving_gifts"}
+        },
+        {
+            "question": "A perfect day with friends includes:",
+            "options": {
+                "A": "Uninterrupted quality time together",
+                "B": "Them helping you with a project"
+            },
+            "scores": {"A": "quality_time", "B": "acts_of_service"}
+        },
+        {
+            "question": "You feel connected to friends through:",
+            "options": {
+                "A": "Hugs and physical closeness",
+                "B": "Words of appreciation"
+            },
+            "scores": {"A": "physical_touch", "B": "words_of_affirmation"}
+        },
+        {
+            "question": "You feel like a priority when friends:",
+            "options": {
+                "A": "Bring you souvenirs from trips",
+                "B": "Go out of their way to help you"
+            },
+            "scores": {"A": "receiving_gifts", "B": "acts_of_service"}
+        },
+        {
+            "question": "What would you prefer from friends?",
+            "options": {
+                "A": "Sitting close during movie nights",
+                "B": "Regular hangout sessions"
+            },
+            "scores": {"A": "physical_touch", "B": "quality_time"}
+        },
+        {
+            "question": "When upset, you want friends to:",
+            "options": {
+                "A": "Be present and listen",
+                "B": "Give you a comforting hug"
+            },
+            "scores": {"A": "quality_time", "B": "physical_touch"}
+        },
+        {
+            "question": "On your birthday, you most appreciate friends who:",
+            "options": {
+                "A": "Write heartfelt messages",
+                "B": "Give meaningful gifts"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "receiving_gifts"}
+        },
+        {
+            "question": "You feel valued when friends:",
+            "options": {
+                "A": "Help you without expecting anything back",
+                "B": "Make time in their busy schedule for you"
+            },
+            "scores": {"A": "acts_of_service", "B": "quality_time"}
+        },
+        {
+            "question": "Which gesture from friends means more?",
+            "options": {
+                "A": "A high-five or side hug",
+                "B": "A surprise coffee or treat"
+            },
+            "scores": {"A": "physical_touch", "B": "receiving_gifts"}
+        },
+        {
+            "question": "You feel closest to friends who:",
+            "options": {
+                "A": "Give genuine compliments",
+                "B": "Show up when you need help"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "acts_of_service"}
+        }
+    ],
+
+    "workplace": [
+        {
+            "question": "When a colleague completes a project, you prefer to:",
+            "options": {
+                "A": "Tell them what a great job they did",
+                "B": "Take time to celebrate the win together"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "quality_time"}
+        },
+        {
+            "question": "You feel valued at work when someone:",
+            "options": {
+                "A": "Brings you coffee or a small treat",
+                "B": "Helps you with a task without being asked"
+            },
+            "scores": {"A": "receiving_gifts", "B": "acts_of_service"}
+        },
+        {
+            "question": "After a stressful meeting, you appreciate a colleague who:",
+            "options": {
+                "A": "Gives you a supportive pat on the back or fist bump",
+                "B": "Sends you a message saying you did well"
+            },
+            "scores": {"A": "physical_touch", "B": "words_of_affirmation"}
+        },
+        {
+            "question": "You feel most connected to coworkers when:",
+            "options": {
+                "A": "You have lunch or breaks together without distractions",
+                "B": "They remember your birthday with a card or treat"
+            },
+            "scores": {"A": "quality_time", "B": "receiving_gifts"}
+        },
+        {
+            "question": "You feel supported at work when a colleague:",
+            "options": {
+                "A": "Picks up some of your workload when you're overwhelmed",
+                "B": "Greets you with a warm handshake or high-five"
+            },
+            "scores": {"A": "acts_of_service", "B": "physical_touch"}
+        },
+        {
+            "question": "Which means more to you at work?",
+            "options": {
+                "A": "Public recognition or praise in a meeting",
+                "B": "A thoughtful gift on your work anniversary"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "receiving_gifts"}
+        },
+        {
+            "question": "A great workday includes:",
+            "options": {
+                "A": "Collaborative brainstorming sessions with your team",
+                "B": "A colleague covering a task so you can focus"
+            },
+            "scores": {"A": "quality_time", "B": "acts_of_service"}
+        },
+        {
+            "question": "You feel like part of the team when:",
+            "options": {
+                "A": "People celebrate with high-fives after a win",
+                "B": "Your manager tells you specifically what you did well"
+            },
+            "scores": {"A": "physical_touch", "B": "words_of_affirmation"}
+        },
+        {
+            "question": "You appreciate colleagues who:",
+            "options": {
+                "A": "Bring snacks or souvenirs back from trips",
+                "B": "Proactively help you meet a deadline"
+            },
+            "scores": {"A": "receiving_gifts", "B": "acts_of_service"}
+        },
+        {
+            "question": "Team bonding is best when:",
+            "options": {
+                "A": "Activities involve friendly physical competition or games",
+                "B": "You get real one-on-one time with teammates"
+            },
+            "scores": {"A": "physical_touch", "B": "quality_time"}
+        },
+        {
+            "question": "When you are struggling at work, you want colleagues to:",
+            "options": {
+                "A": "Sit down and talk through the problem with you",
+                "B": "Offer a reassuring fist bump or pat on the shoulder"
+            },
+            "scores": {"A": "quality_time", "B": "physical_touch"}
+        },
+        {
+            "question": "The best workplace recognition is:",
+            "options": {
+                "A": "A handwritten thank-you note from your boss",
+                "B": "A gift card or bonus for your work"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "receiving_gifts"}
+        },
+        {
+            "question": "You feel motivated when your team:",
+            "options": {
+                "A": "Shares responsibilities and helps each other out",
+                "B": "Makes time for regular check-ins and conversations"
+            },
+            "scores": {"A": "acts_of_service", "B": "quality_time"}
+        },
+        {
+            "question": "Which gesture from a coworker means more?",
+            "options": {
+                "A": "A celebratory handshake or hug after a big milestone",
+                "B": "A small desk gift that shows they know your taste"
+            },
+            "scores": {"A": "physical_touch", "B": "receiving_gifts"}
+        },
+        {
+            "question": "You feel most respected at work when people:",
+            "options": {
+                "A": "Acknowledge your contributions verbally",
+                "B": "Step in to help without waiting to be asked"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "acts_of_service"}
+        }
+    ],
+
+    "long_distance": [
+        {
+            "question": "When you're apart, you feel most loved when they:",
+            "options": {
+                "A": "Send you a sweet voice or text message",
+                "B": "Schedule a dedicated video call just for you"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "quality_time"}
+        },
+        {
+            "question": "You feel close despite the distance when they:",
+            "options": {
+                "A": "Send you a surprise care package",
+                "B": "Handle something for you from afar, like booking a reservation"
+            },
+            "scores": {"A": "receiving_gifts", "B": "acts_of_service"}
+        },
+        {
+            "question": "When you finally reunite, the first thing you want is:",
+            "options": {
+                "A": "A long, tight hug",
+                "B": "To hear them say how much they missed you"
+            },
+            "scores": {"A": "physical_touch", "B": "words_of_affirmation"}
+        },
+        {
+            "question": "During a video call, what matters most?",
+            "options": {
+                "A": "Having their full attention without multitasking",
+                "B": "Them showing you a gift they bought for your next visit"
+            },
+            "scores": {"A": "quality_time", "B": "receiving_gifts"}
+        },
+        {
+            "question": "You feel cared for from a distance when they:",
+            "options": {
+                "A": "Research and plan activities for your next visit",
+                "B": "Send a hoodie or item that smells like them"
+            },
+            "scores": {"A": "acts_of_service", "B": "physical_touch"}
+        },
+        {
+            "question": "What means more while apart?",
+            "options": {
+                "A": "A long message explaining why they love you",
+                "B": "A surprise delivery to your door"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "receiving_gifts"}
+        },
+        {
+            "question": "The best long-distance date night includes:",
+            "options": {
+                "A": "Watching a movie together over video call",
+                "B": "Them ordering food delivery to your house"
+            },
+            "scores": {"A": "quality_time", "B": "acts_of_service"}
+        },
+        {
+            "question": "You miss them most when you think about:",
+            "options": {
+                "A": "The feeling of being held or touched",
+                "B": "The encouraging things they say to you"
+            },
+            "scores": {"A": "physical_touch", "B": "words_of_affirmation"}
+        },
+        {
+            "question": "You feel remembered when they:",
+            "options": {
+                "A": "Mail you something personal or meaningful",
+                "B": "Help coordinate something in your life from afar"
+            },
+            "scores": {"A": "receiving_gifts", "B": "acts_of_service"}
+        },
+        {
+            "question": "On visits, what matters most?",
+            "options": {
+                "A": "Constant physical closeness — holding hands, cuddling",
+                "B": "Uninterrupted quality time doing things together"
+            },
+            "scores": {"A": "physical_touch", "B": "quality_time"}
+        },
+        {
+            "question": "When you're feeling lonely, you prefer they:",
+            "options": {
+                "A": "Drop everything for an unplanned video call",
+                "B": "Promise extra cuddles on the next visit"
+            },
+            "scores": {"A": "quality_time", "B": "physical_touch"}
+        },
+        {
+            "question": "The most meaningful thing they can send is:",
+            "options": {
+                "A": "A handwritten letter about your relationship",
+                "B": "A carefully chosen gift that reminds them of you"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "receiving_gifts"}
+        },
+        {
+            "question": "You feel secure in the relationship when they:",
+            "options": {
+                "A": "Take initiative to solve problems for you",
+                "B": "Make time for daily check-ins no matter how busy"
+            },
+            "scores": {"A": "acts_of_service", "B": "quality_time"}
+        },
+        {
+            "question": "When reuniting, which matters more?",
+            "options": {
+                "A": "A warm, lingering embrace at the airport",
+                "B": "A welcome-back gift they picked out for you"
+            },
+            "scores": {"A": "physical_touch", "B": "receiving_gifts"}
+        },
+        {
+            "question": "You feel most connected across the distance when they:",
+            "options": {
+                "A": "Leave you voice notes throughout the day",
+                "B": "Do thoughtful things like paying a bill or making an appointment for you"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "acts_of_service"}
+        }
+    ],
+
+    "self": [
+        {
+            "question": "When you accomplish something, you prefer to:",
+            "options": {
+                "A": "Receive praise and recognition",
+                "B": "Celebrate by spending time with loved ones"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "quality_time"}
+        },
+        {
+            "question": "You feel appreciated when people:",
+            "options": {
+                "A": "Give you thoughtful gifts",
+                "B": "Help make your life easier"
+            },
+            "scores": {"A": "receiving_gifts", "B": "acts_of_service"}
+        },
+        {
+            "question": "After a tough day, you would rather:",
+            "options": {
+                "A": "Get a comforting hug",
+                "B": "Hear words of encouragement"
+            },
+            "scores": {"A": "physical_touch", "B": "words_of_affirmation"}
+        },
+        {
+            "question": "You feel most loved when people:",
+            "options": {
+                "A": "Give you their full attention",
+                "B": "Surprise you with something special"
+            },
+            "scores": {"A": "quality_time", "B": "receiving_gifts"}
+        },
+        {
+            "question": "You feel cared for when someone:",
+            "options": {
+                "A": "Does something helpful for you",
+                "B": "Shows physical affection"
+            },
+            "scores": {"A": "acts_of_service", "B": "physical_touch"}
+        },
+        {
+            "question": "What makes you feel valued?",
+            "options": {
+                "A": "Verbal appreciation and compliments",
+                "B": "Receiving meaningful presents"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "receiving_gifts"}
+        },
+        {
+            "question": "You feel connected through:",
+            "options": {
+                "A": "Quality conversations",
+                "B": "Acts of kindness from others"
+            },
+            "scores": {"A": "quality_time", "B": "acts_of_service"}
+        },
+        {
+            "question": "Which resonates more with you?",
+            "options": {
+                "A": "Physical closeness and touch",
+                "B": "Words of affirmation"
+            },
+            "scores": {"A": "physical_touch", "B": "words_of_affirmation"}
+        },
+        {
+            "question": "You feel special when:",
+            "options": {
+                "A": "Someone remembers your favorites",
+                "B": "Someone takes care of a task for you"
+            },
+            "scores": {"A": "receiving_gifts", "B": "acts_of_service"}
+        },
+        {
+            "question": "What would you prefer?",
+            "options": {
+                "A": "A warm embrace",
+                "B": "Uninterrupted time together"
+            },
+            "scores": {"A": "physical_touch", "B": "quality_time"}
+        },
+        {
+            "question": "When stressed, you prefer:",
+            "options": {
+                "A": "Someone to listen attentively",
+                "B": "Physical comfort"
+            },
+            "scores": {"A": "quality_time", "B": "physical_touch"}
+        },
+        {
+            "question": "You most appreciate:",
+            "options": {
+                "A": "Heartfelt written messages",
+                "B": "Thoughtful gifts"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "receiving_gifts"}
+        },
+        {
+            "question": "You feel supported when others:",
+            "options": {
+                "A": "Help without being asked",
+                "B": "Spend dedicated time with you"
+            },
+            "scores": {"A": "acts_of_service", "B": "quality_time"}
+        },
+        {
+            "question": "Which touches you more?",
+            "options": {
+                "A": "A reassuring pat or hug",
+                "B": "A small gift that shows they care"
+            },
+            "scores": {"A": "physical_touch", "B": "receiving_gifts"}
+        },
+        {
+            "question": "You feel most understood when people:",
+            "options": {
+                "A": "Express their feelings about you",
+                "B": "Show love through actions"
+            },
+            "scores": {"A": "words_of_affirmation", "B": "acts_of_service"}
+        }
+    ]
+}
