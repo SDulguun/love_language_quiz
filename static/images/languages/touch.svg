@@ -1,0 +1,31 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Physical Touch - Hug/Embrace -->
+  <defs>
+    <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b8a"/>
+      <stop offset="100%" style="stop-color:#ff8e72"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Two figures hugging -->
+  <!-- Person 1 body -->
+  <ellipse cx="80" cy="130" rx="35" ry="45" fill="#ffd5dc"/>
+  <!-- Person 1 head -->
+  <circle cx="75" cy="70" r="25" fill="#ffd5dc"/>
+
+  <!-- Person 2 body -->
+  <ellipse cx="120" cy="130" rx="35" ry="45" fill="#ffe5e9"/>
+  <!-- Person 2 head -->
+  <circle cx="125" cy="70" r="25" fill="#ffe5e9"/>
+
+  <!-- Arms embracing -->
+  <ellipse cx="100" cy="115" rx="55" ry="25" fill="url(#grad5)" opacity="0.3"/>
+
+  <!-- Heart above -->
+  <path d="M100 30 C93 20 80 20 80 33 C80 46 100 58 100 58 C100 58 120 46 120 33 C120 20 107 20 100 30" fill="url(#grad5)"/>
+
+  <!-- Small hearts -->
+  <path d="M40 50 C37 45 30 45 30 52 C30 59 40 65 40 65 C40 65 50 59 50 52 C50 45 43 45 40 50" fill="#ffb3c1" opacity="0.5"/>
+  <path d="M160 55 C157 50 150 50 150 57 C150 64 160 70 160 70 C160 70 170 64 170 57 C170 50 163 50 160 55" fill="#ffb3c1" opacity="0.5"/>
+  <path d="M165 140 C162 135 155 135 155 142 C155 149 165 155 165 155 C165 155 175 149 175 142 C175 135 168 135 165 140" fill="#ffb3c1" opacity="0.4"/>
+</svg>

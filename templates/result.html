@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container result-page">
+    <div class="result-image-container fade-in-up" style="animation-delay: 0.1s">
+        <img src="{{ url_for('static', filename=image) }}" alt="{{ language }}" class="result-image">
+    </div>
+
+    <p class="result-label fade-in-up" style="animation-delay: 0.2s">{{ name }}, your love language is</p>
+    <h1 class="result-language fade-in-up" style="animation-delay: 0.3s">
+        <i class="fa-solid fa-{{ icon }}"></i> {{ language }}
+    </h1>
+
+    <!-- Top 2 Languages Highlight -->
+    <div class="top-languages fade-in-up" style="animation-delay: 0.4s">
+        <div class="top-lang primary-lang">
+            <span class="top-lang-label">Primary</span>
+            <span class="top-lang-name"><i class="fa-solid fa-{{ primary_icon }}"></i> {{ primary_name }}</span>
+        </div>
+        {% if secondary_name %}
+        <div class="top-lang secondary-lang">
+            <span class="top-lang-label">Secondary</span>
+            <span class="top-lang-name"><i class="fa-solid fa-{{ secondary_icon }}"></i> {{ secondary_name }}</span>
+        </div>
+        {% endif %}
+    </div>
+
+    <p class="result-description fade-in-up" style="animation-delay: 0.5s">{{ description }}</p>
+
+    <!-- What This Means -->
+    <div class="insight-section fade-in-up" style="animation-delay: 0.6s">
+        <h3 class="insight-title">
+            <i class="fa-solid fa-lightbulb"></i>
+            What This Means
+        </h3>
+        <p class="insight-text">{{ what_this_means }}</p>
+    </div>
+
+    <!-- Practical Tips -->
+    <div class="tips-section fade-in-up" style="animation-delay: 0.7s">
+        <h3 class="tips-title">
+            <i class="fa-solid fa-star"></i>
+            3 Tips for You
+        </h3>
+        <ul class="tips-list">
+            {% for tip in tips %}
+            <li>
+                <i class="fa-solid fa-check-circle"></i>
+                <span>{{ tip }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Partner Tips -->
+    <div class="tips-section partner-tips fade-in-up" style="animation-delay: 0.8s">
+        <h3 class="tips-title">
+            <i class="fa-solid fa-users"></i>
+            Tips for {{ context_label }}
+        </h3>
+        <ul class="tips-list">
+            {% for tip in partner_tips %}
+            <li>
+                <i class="fa-solid fa-heart-circle-check"></i>
+                <span>{{ tip }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Doughnut Chart -->
+    <div class="chart-container fade-in-up" style="animation-delay: 0.9s">
+        <p class="chart-title">
+            <i class="fa-solid fa-chart-pie"></i>
+            Your Love Language Breakdown
+        </p>
+        <canvas id="scoreChart"></canvas>
+        <div class="chart-legend">
+            {% for item in scores %}
+            <div class="legend-item">
+                <span class="legend-dot" style="background: {{ ['#ff6b8a','#ff8e72','#ffb6c1','#ffdab9','#dda0dd'][loop.index0 % 5] }};"></span>
+                <i class="fa-solid fa-{{ item.icon }} legend-icon"></i>
+                <span class="legend-name">{{ item.name }}</span>
+                <span class="legend-value">{{ item.score }} ({{ item.percent }}%)</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="scores-section fade-in-up" style="animation-delay: 1.0s">
+        <h3 class="scores-title">
+            <i class="fa-solid fa-chart-simple"></i>
+            All Your Scores
+        </h3>
+        {% for item in scores %}
+        <div class="score-row">
+            <div class="score-header">
+                <i class="fa-solid fa-{{ item.icon }}"></i>
+                <span class="score-name">{{ item.name }}</span>
+                <span class="score-value">{{ item.score }}</span>
+            </div>
+            <div class="score-bar-container">
+                <div class="score-bar" style="width: {{ (item.score / total_answers * 100)|int }}%"></div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <a href="{{ url_for('home') }}" class="btn fade-in-up" style="animation-delay: 1.1s">
+        <i class="fa-solid fa-rotate-left"></i>
+        Take Again
+    </a>
+</div>
+
+<script>
+function launchConfetti() {
+    const duration = 3000;
+    const end = Date.now() + duration;
+    const colors = ['{{ current_theme.primary }}', '{{ current_theme.primary_end }}', '#ff69b4', '#ffb6c1'];
+
+    (function frame() {
+        confetti({ particleCount: 3, angle: 60, spread: 55, origin: { x: 0 }, colors: colors });
+        confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1 }, colors: colors });
+        if (Date.now() < end) requestAnimationFrame(frame);
+    }());
+
+    setTimeout(() => {
+        confetti({ particleCount: 50, spread: 100, origin: { y: 0.6 }, colors: colors, shapes: ['circle'], scalar: 1.2 });
+    }, 500);
+}
+
+function createChart() {
+    const ctx = document.getElementById('scoreChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: [{% for item in scores %}'{{ item.name }}'{% if not loop.last %}, {% endif %}{% endfor %}],
+            datasets: [{
+                data: [{% for item in scores %}{{ item.score }}{% if not loop.last %}, {% endif %}{% endfor %}],
+                backgroundColor: ['rgba(255,107,138,0.8)','rgba(255,142,114,0.8)','rgba(255,182,193,0.8)','rgba(255,218,185,0.8)','rgba(221,160,221,0.8)'],
+                borderColor: ['rgba(255,107,138,1)','rgba(255,142,114,1)','rgba(255,182,193,1)','rgba(255,218,185,1)','rgba(221,160,221,1)'],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { display: false } },
+            cutout: '60%',
+            animation: { animateScale: true, animateRotate: true }
+        }
+    });
+}
+
+window.onload = function() {
+    launchConfetti();
+    createChart();
+};
+</script>
+{% endblock %}

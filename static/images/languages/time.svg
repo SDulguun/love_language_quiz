@@ -1,0 +1,28 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Quality Time - Two people together -->
+  <defs>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b8a"/>
+      <stop offset="100%" style="stop-color:#ff8e72"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Couch/Sofa -->
+  <rect x="25" y="120" width="150" height="50" rx="10" fill="#ffccd5"/>
+  <rect x="20" y="110" width="160" height="20" rx="8" fill="url(#grad2)"/>
+
+  <!-- Person 1 -->
+  <circle cx="70" cy="80" r="20" fill="#ffd5dc"/>
+  <ellipse cx="70" cy="130" rx="25" ry="30" fill="#ffd5dc"/>
+
+  <!-- Person 2 -->
+  <circle cx="130" cy="80" r="20" fill="#ffd5dc"/>
+  <ellipse cx="130" cy="130" rx="25" ry="30" fill="#ffd5dc"/>
+
+  <!-- Heart between them -->
+  <path d="M100 95 C95 88 85 88 85 98 C85 108 100 118 100 118 C100 118 115 108 115 98 C115 88 105 88 100 95" fill="url(#grad2)"/>
+
+  <!-- Small decorative hearts -->
+  <path d="M50 50 C47 45 40 45 40 52 C40 59 50 65 50 65 C50 65 60 59 60 52 C60 45 53 45 50 50" fill="#ffb3c1" opacity="0.5"/>
+  <path d="M150 45 C147 40 140 40 140 47 C140 54 150 60 150 60 C150 60 160 54 160 47 C160 40 153 40 150 45" fill="#ffb3c1" opacity="0.5"/>
+</svg>

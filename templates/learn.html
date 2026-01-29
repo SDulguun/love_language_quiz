@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container learn-container">
+    <div class="hero-section">
+        <div class="main-illustration" style="width: 80px; height: 80px;">
+            <i class="fa-solid fa-book-heart" style="font-size: 36px;"></i>
+        </div>
+    </div>
+
+    <h1>The 5 Love Languages</h1>
+    <p class="subtitle">Understanding how we express and receive love can transform our relationships. Learn about each love language below.</p>
+
+    <div class="languages-grid">
+        {% for key, lang in languages.items() %}
+        <div class="language-card">
+            <img src="{{ url_for('static', filename=lang.image) }}" alt="{{ lang.name }}" class="language-image">
+            <h2 class="language-name">{{ lang.name }}</h2>
+            <p class="language-description">{{ lang.extended }}</p>
+            <div class="examples-section">
+                <h3><i class="fa-solid fa-lightbulb"></i> Examples</h3>
+                <ul class="examples-list">
+                    {% for example in lang.examples %}
+                    <li>{{ example }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <a href="{{ url_for('home') }}" class="btn">
+        <i class="fa-solid fa-heart"></i>
+        Take the Quiz
+    </a>
+</div>
+{% endblock %}

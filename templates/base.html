@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Language Quiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Chart.js for score visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Canvas Confetti for celebration effect -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        :root {
+            --gradient-start: {{ current_theme.gradient_start }};
+            --gradient-end: {{ current_theme.gradient_end }};
+            --primary: {{ current_theme.primary }};
+            --primary-end: {{ current_theme.primary_end }};
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts-bg">
+        <div class="heart-float"><i class="fa-solid fa-heart"></i></div>
+        <div class="heart-float"><i class="fa-solid fa-heart"></i></div>
+        <div class="heart-float"><i class="fa-solid fa-heart"></i></div>
+        <div class="heart-float"><i class="fa-solid fa-heart"></i></div>
+        <div class="heart-float"><i class="fa-solid fa-heart"></i></div>
+        <div class="heart-float"><i class="fa-solid fa-heart"></i></div>
+        <div class="heart-float"><i class="fa-solid fa-heart"></i></div>
+        <div class="heart-float"><i class="fa-solid fa-heart"></i></div>
+    </div>
+
+    <nav class="main-nav glass-effect">
+        <a href="{{ url_for('home') }}" class="nav-logo">
+            <i class="fa-solid fa-heart"></i>
+            Love Quiz
+        </a>
+        <div class="nav-links">
+            <a href="{{ url_for('learn') }}" class="nav-link">
+                <i class="fa-solid fa-book-open"></i>
+                Learn
+            </a>
+            <div class="theme-dropdown">
+                <button class="theme-btn">
+                    <i class="fa-solid fa-palette"></i>
+                    Theme
+                </button>
+                <div class="theme-menu">
+                    {% for key, theme in all_themes.items() %}
+                    <a href="{{ url_for('set_theme', theme_name=key) }}" class="theme-option {% if theme_name == key %}active{% endif %}">
+                        <span class="theme-swatch" style="background: linear-gradient(135deg, {{ theme.primary }} 0%, {{ theme.primary_end }} 100%);"></span>
+                        {{ theme.name }}
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Love Letter Illustration -->
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b8a"/>
+      <stop offset="100%" style="stop-color:#ff8e72"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Envelope -->
+  <rect x="30" y="60" width="140" height="100" rx="8" fill="#fff" stroke="#ffccd5" stroke-width="3"/>
+  <polygon points="30,60 100,110 170,60" fill="#fff" stroke="#ffccd5" stroke-width="3"/>
+
+  <!-- Heart seal -->
+  <circle cx="100" cy="85" r="20" fill="url(#grad1)"/>
+  <path d="M100 78 C95 73 87 73 87 80 C87 87 100 95 100 95 C100 95 113 87 113 80 C113 73 105 73 100 78" fill="#fff"/>
+
+  <!-- Small hearts floating -->
+  <path d="M45 45 C42 40 35 40 35 47 C35 54 45 60 45 60 C45 60 55 54 55 47 C55 40 48 40 45 45" fill="#ffb3c1" opacity="0.7"/>
+  <path d="M155 35 C152 30 145 30 145 37 C145 44 155 50 155 50 C155 50 165 44 165 37 C165 30 158 30 155 35" fill="#ffb3c1" opacity="0.5"/>
+  <path d="M160 140 C157 135 150 135 150 142 C150 149 160 155 160 155 C160 155 170 149 170 142 C170 135 163 135 160 140" fill="#ffb3c1" opacity="0.6"/>
+</svg>

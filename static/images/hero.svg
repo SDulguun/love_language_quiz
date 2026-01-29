@@ -1,0 +1,32 @@
+<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Hero Banner - Love and Hearts -->
+  <defs>
+    <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b8a"/>
+      <stop offset="100%" style="stop-color:#ff8e72"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Main large heart -->
+  <path d="M150 60 C130 30 85 30 85 75 C85 120 150 170 150 170 C150 170 215 120 215 75 C215 30 170 30 150 60" fill="url(#heroGrad)"/>
+
+  <!-- Inner heart shine -->
+  <path d="M130 70 C120 55 100 55 100 75 C100 85 115 100 130 110" fill="#fff" opacity="0.3"/>
+
+  <!-- Floating hearts around -->
+  <path d="M50 40 C45 30 30 30 30 45 C30 60 50 75 50 75 C50 75 70 60 70 45 C70 30 55 30 50 40" fill="#ffb3c1" opacity="0.7"/>
+  <path d="M250 50 C245 40 230 40 230 55 C230 70 250 85 250 85 C250 85 270 70 270 55 C270 40 255 40 250 50" fill="#ffb3c1" opacity="0.6"/>
+  <path d="M40 140 C35 130 20 130 20 145 C20 160 40 175 40 175 C40 175 60 160 60 145 C60 130 45 130 40 140" fill="#ffb3c1" opacity="0.5"/>
+  <path d="M260 130 C255 120 240 120 240 135 C240 150 260 165 260 165 C260 165 280 150 280 135 C280 120 265 120 260 130" fill="#ffb3c1" opacity="0.5"/>
+
+  <!-- Tiny hearts -->
+  <circle cx="80" cy="100" r="5" fill="#ffccd5"/>
+  <circle cx="220" cy="95" r="4" fill="#ffccd5"/>
+  <circle cx="100" cy="160" r="3" fill="#ffccd5"/>
+  <circle cx="200" cy="155" r="4" fill="#ffccd5"/>
+
+  <!-- Sparkles -->
+  <circle cx="120" cy="45" r="3" fill="#fff" opacity="0.8"/>
+  <circle cx="180" cy="50" r="2" fill="#fff" opacity="0.8"/>
+  <circle cx="150" cy="90" r="4" fill="#fff" opacity="0.6"/>
+</svg>

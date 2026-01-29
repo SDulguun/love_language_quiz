@@ -1,0 +1,31 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gift Box Illustration -->
+  <defs>
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b8a"/>
+      <stop offset="100%" style="stop-color:#ff8e72"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Gift box body -->
+  <rect x="40" y="80" width="120" height="90" rx="5" fill="url(#grad3)"/>
+
+  <!-- Gift box lid -->
+  <rect x="35" y="65" width="130" height="25" rx="5" fill="#ff8e72"/>
+
+  <!-- Ribbon vertical -->
+  <rect x="90" y="65" width="20" height="105" fill="#fff" opacity="0.9"/>
+
+  <!-- Ribbon horizontal -->
+  <rect x="35" y="70" width="130" height="15" fill="#fff" opacity="0.9"/>
+
+  <!-- Bow -->
+  <ellipse cx="85" cy="55" rx="20" ry="15" fill="#fff"/>
+  <ellipse cx="115" cy="55" rx="20" ry="15" fill="#fff"/>
+  <circle cx="100" cy="60" r="10" fill="url(#grad3)"/>
+
+  <!-- Decorative hearts -->
+  <path d="M35 40 C32 35 25 35 25 42 C25 49 35 55 35 55 C35 55 45 49 45 42 C45 35 38 35 35 40" fill="#ffb3c1" opacity="0.6"/>
+  <path d="M165 40 C162 35 155 35 155 42 C155 49 165 55 165 55 C165 55 175 49 175 42 C175 35 168 35 165 40" fill="#ffb3c1" opacity="0.6"/>
+  <path d="M170 130 C167 125 160 125 160 132 C160 139 170 145 170 145 C170 145 180 139 180 132 C180 125 173 125 170 130" fill="#ffb3c1" opacity="0.5"/>
+</svg>

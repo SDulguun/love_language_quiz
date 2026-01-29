@@ -1,0 +1,25 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Acts of Service - Helping Hands -->
+  <defs>
+    <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b8a"/>
+      <stop offset="100%" style="stop-color:#ff8e72"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Left hand -->
+  <path d="M30 130 Q30 80 60 70 L65 70 Q75 70 75 80 L75 100 Q75 105 70 105 L60 105 L60 130 Q60 140 50 140 L40 140 Q30 140 30 130" fill="#ffd5dc" stroke="#ffb3c1" stroke-width="2"/>
+
+  <!-- Right hand -->
+  <path d="M170 130 Q170 80 140 70 L135 70 Q125 70 125 80 L125 100 Q125 105 130 105 L140 105 L140 130 Q140 140 150 140 L160 140 Q170 140 170 130" fill="#ffd5dc" stroke="#ffb3c1" stroke-width="2"/>
+
+  <!-- Heart being held -->
+  <path d="M100 85 C90 70 70 70 70 90 C70 110 100 135 100 135 C100 135 130 110 130 90 C130 70 110 70 100 85" fill="url(#grad4)"/>
+
+  <!-- Sparkles -->
+  <circle cx="55" cy="55" r="4" fill="#ffb3c1"/>
+  <circle cx="145" cy="50" r="3" fill="#ffb3c1"/>
+  <circle cx="100" cy="45" r="5" fill="#ffb3c1" opacity="0.7"/>
+  <circle cx="45" cy="160" r="3" fill="#ffb3c1" opacity="0.5"/>
+  <circle cx="155" cy="155" r="4" fill="#ffb3c1" opacity="0.6"/>
+</svg>

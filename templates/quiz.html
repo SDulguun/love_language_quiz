@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <a href="{% if current > 0 %}{{ url_for('go_back') }}{% else %}{{ url_for('home') }}{% endif %}" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i>
+        Back
+    </a>
+
+    <div class="progress-bar">
+        <div class="progress-fill" style="width: {{ progress }}%"></div>
+    </div>
+
+    <div class="question-number">
+        <i class="fa-solid fa-question-circle"></i>
+        Question {{ current + 1 }} of {{ total }}
+    </div>
+
+    <p class="question-text fade-in-up">{{ question.question }}</p>
+
+    <div class="options fade-in-up" style="animation-delay: 0.2s;">
+        <form action="{{ url_for('answer') }}" method="POST">
+            <button type="submit" name="choice" value="A" class="option-btn">
+                <i class="fa-solid fa-a"></i>
+                <span class="option-text">{{ question.options.A }}</span>
+            </button>
+            <button type="submit" name="choice" value="B" class="option-btn">
+                <i class="fa-solid fa-b"></i>
+                <span class="option-text">{{ question.options.B }}</span>
+            </button>
+            <button type="submit" name="choice" value="BOTH" class="option-btn option-both">
+                <i class="fa-solid fa-heart"></i>
+                <span class="option-text">Both apply to me equally</span>
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
