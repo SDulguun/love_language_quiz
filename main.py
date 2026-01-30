@@ -14,14 +14,17 @@ from display import (
     get_partner_tips,
     get_top_two,
     format_scores_for_display,
-    get_all_languages
+    get_all_languages,
+    get_compatibility_tip
 )
 from themes import get_theme, get_all_themes
 from auth import (
     register_user,
     authenticate_user,
     add_quiz_result,
-    get_user_history
+    get_user_history,
+    user_exists,
+    get_user_latest_result
 )
 
 app = Flask(__name__)
