@@ -151,6 +151,32 @@ body {
     background: rgba(0, 0, 0, 0.05);
 }
 
+/* Sound Toggle Button */
+.sound-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    color: #636e72;
+    background: none;
+    border: none;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sound-toggle-btn:hover {
+    color: var(--primary);
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.sound-toggle-btn:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
 /* Theme Dropdown */
 .theme-dropdown {
     position: relative;

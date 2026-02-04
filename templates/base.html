@@ -37,12 +37,24 @@
         <div class="heart-float"><i class="fa-solid fa-heart"></i></div>
     </div>
 
+    <!-- Audio elements for sound effects -->
+    <audio id="clickSound" preload="auto">
+        <source src="{{ url_for('static', filename='audio/click.mp3') }}" type="audio/mpeg">
+    </audio>
+    <audio id="celebrationSound" preload="auto">
+        <source src="{{ url_for('static', filename='audio/celebration.mp3') }}" type="audio/mpeg">
+    </audio>
+
     <nav class="main-nav glass-effect">
         <a href="{{ url_for('home') }}" class="nav-logo">
             <i class="fa-solid fa-heart"></i>
             Love Quiz
         </a>
         <div class="nav-links">
+            <!-- Sound Toggle Button -->
+            <button class="sound-toggle-btn" onclick="toggleSound()" title="Toggle sound effects">
+                <i class="fa-solid fa-volume-high" id="soundIcon"></i>
+            </button>
             <a href="{{ url_for('learn') }}" class="nav-link">
                 <i class="fa-solid fa-book-open"></i>
                 Learn
@@ -86,5 +98,46 @@
     <main class="main-content">
         {% block content %}{% endblock %}
     </main>
+
+    <script>
+        // Sound management
+        let soundEnabled = localStorage.getItem('soundEnabled') !== 'false';
+
+        function updateSoundIcon() {
+            const icon = document.getElementById('soundIcon');
+            if (icon) {
+                icon.className = soundEnabled ? 'fa-solid fa-volume-high' : 'fa-solid fa-volume-xmark';
+            }
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            localStorage.setItem('soundEnabled', soundEnabled);
+            updateSoundIcon();
+        }
+
+        function playClickSound() {
+            if (soundEnabled) {
+                const sound = document.getElementById('clickSound');
+                if (sound) {
+                    sound.currentTime = 0;
+                    sound.play().catch(() => {});
+                }
+            }
+        }
+
+        function playCelebrationSound() {
+            if (soundEnabled) {
+                const sound = document.getElementById('celebrationSound');
+                if (sound) {
+                    sound.currentTime = 0;
+                    sound.play().catch(() => {});
+                }
+            }
+        }
+
+        // Initialize sound icon on page load
+        document.addEventListener('DOMContentLoaded', updateSoundIcon);
+    </script>
 </body>
 </html>
