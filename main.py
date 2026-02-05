@@ -59,6 +59,12 @@ def learn():
     return render_template("learn.html", languages=languages)
 
 
+@app.route("/music-player")
+def music_player():
+    """Hidden iframe music player that persists across pages."""
+    return render_template("music_player.html")
+
+
 @app.route("/theme/<theme_name>")
 def set_theme(theme_name):
     """Set the color theme."""
@@ -158,6 +164,8 @@ def quiz():
 @app.route("/answer", methods=["POST"])
 def answer():
     """Process an answer and move to next question."""
+    from flask import jsonify
+
     context = session.get("context", "romantic")
     questions = load_questions(context)
     current = session.get("current", 0)
@@ -180,6 +188,23 @@ def answer():
         session["answers"] = answers
         session["answer_counts"] = answer_counts
         session["current"] = current + 1
+
+    # Check if AJAX request
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        new_current = session.get("current", 0)
+        if new_current >= len(questions):
+            return jsonify({"redirect": url_for("result")})
+
+        next_question = questions[new_current]
+        progress = (new_current / len(questions)) * 100
+        return jsonify({
+            "question": next_question["question"],
+            "optionA": next_question["options"]["A"],
+            "optionB": next_question["options"]["B"],
+            "current": new_current,
+            "total": len(questions),
+            "progress": progress
+        })
 
     return redirect(url_for("quiz"))
 

@@ -37,17 +37,17 @@
 
     <div class="options fade-in-up" style="animation-delay: 0.2s;">
         <form id="quizForm" action="{{ url_for('answer') }}" method="POST">
-            <button type="submit" name="choice" value="A" class="option-btn" id="optionA" onclick="playClickSound()">
+            <button type="submit" name="choice" value="A" class="option-btn" id="optionA" >
                 <i class="fa-solid fa-a"></i>
                 <span class="option-text">{{ question.options.A }}</span>
                 <span class="keyboard-hint">Press A or 1</span>
             </button>
-            <button type="submit" name="choice" value="B" class="option-btn" id="optionB" onclick="playClickSound()">
+            <button type="submit" name="choice" value="B" class="option-btn" id="optionB" >
                 <i class="fa-solid fa-b"></i>
                 <span class="option-text">{{ question.options.B }}</span>
                 <span class="keyboard-hint">Press B or 2</span>
             </button>
-            <button type="submit" name="choice" value="BOTH" class="option-btn option-both" id="optionBoth" onclick="playClickSound()">
+            <button type="submit" name="choice" value="BOTH" class="option-btn option-both" id="optionBoth" >
                 <i class="fa-solid fa-heart"></i>
                 <span class="option-text">Both apply to me equally</span>
                 <span class="keyboard-hint">Press C or 3</span>
@@ -62,23 +62,80 @@
 </div>
 
 <script>
+// Submit answer via AJAX to keep music playing
+function submitAnswer(choice) {
+    const formData = new FormData();
+    formData.append('choice', choice);
+
+    fetch('{{ url_for("answer") }}', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.redirect) {
+            // Quiz finished - go to results
+            window.location.href = data.redirect;
+        } else {
+            // Update the page with next question
+            document.querySelector('.question-text').textContent = data.question;
+            document.querySelector('#optionA .option-text').textContent = data.optionA;
+            document.querySelector('#optionB .option-text').textContent = data.optionB;
+            document.querySelector('.question-number').innerHTML =
+                '<i class="fa-solid fa-question-circle"></i> Question ' + (data.current + 1) + ' of ' + data.total;
+            document.querySelector('.progress-fill').style.width = data.progress + '%';
+
+            // Reset button states
+            document.querySelectorAll('.option-btn').forEach(btn => {
+                btn.classList.remove('keyboard-selected');
+            });
+        }
+    })
+    .catch(err => {
+        // Fallback to regular form submit
+        console.error(err);
+        window.location.href = '{{ url_for("quiz") }}';
+    });
+}
+
+// Override form submission
+document.getElementById('quizForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const clickedButton = document.activeElement;
+    if (clickedButton && clickedButton.value) {
+        submitAnswer(clickedButton.value);
+    }
+});
+
+// Handle button clicks directly
+document.querySelectorAll('.option-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        submitAnswer(this.value);
+    });
+});
+
+// Keyboard navigation
 document.addEventListener('keydown', function(e) {
     const key = e.key.toLowerCase();
-    let button = null;
+    let choice = null;
 
     if (key === 'a' || key === '1') {
-        button = document.getElementById('optionA');
+        choice = 'A';
+        document.getElementById('optionA').classList.add('keyboard-selected');
     } else if (key === 'b' || key === '2') {
-        button = document.getElementById('optionB');
+        choice = 'B';
+        document.getElementById('optionB').classList.add('keyboard-selected');
     } else if (key === 'c' || key === '3') {
-        button = document.getElementById('optionBoth');
+        choice = 'BOTH';
+        document.getElementById('optionBoth').classList.add('keyboard-selected');
     }
 
-    if (button) {
-        // Add visual feedback
-        button.classList.add('keyboard-selected');
-        playClickSound();
-        setTimeout(() => button.click(), 150);
+    if (choice) {
+        setTimeout(() => submitAnswer(choice), 150);
     }
 });
 </script>

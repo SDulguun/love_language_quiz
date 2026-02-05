@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { margin: 0; padding: 0; background: transparent; }
+    </style>
+</head>
+<body>
+    <audio id="bgMusic" loop>
+        <source src="{{ url_for('static', filename='audio/background.mp3') }}" type="audio/mpeg">
+    </audio>
+    <script>
+        const bgMusic = document.getElementById('bgMusic');
+        bgMusic.volume = 0.3;
+
+        // Listen for messages from parent
+        window.addEventListener('message', function(e) {
+            if (e.data === 'play') {
+                bgMusic.play().catch(() => {});
+            } else if (e.data === 'pause') {
+                bgMusic.pause();
+            } else if (e.data === 'toggle') {
+                if (bgMusic.paused) {
+                    bgMusic.play().catch(() => {});
+                } else {
+                    bgMusic.pause();
+                }
+            } else if (e.data === 'status') {
+                parent.postMessage({ playing: !bgMusic.paused }, '*');
+            }
+        });
+
+        // Auto-play if was playing before
+        if (localStorage.getItem('musicEnabled') === 'true') {
+            bgMusic.play().catch(() => {});
+        }
+    </script>
+</body>
+</html>

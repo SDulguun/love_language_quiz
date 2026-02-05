@@ -198,5 +198,397 @@
       "physical_touch": 1
     },
     "icon": "gift"
+  },
+  {
+    "name": "D",
+    "result": "Words of Affirmation",
+    "date": "2026-02-05 14:51",
+    "share_id": "d5189c42",
+    "scores": {
+      "words_of_affirmation": 5,
+      "quality_time": 2,
+      "receiving_gifts": 5,
+      "acts_of_service": 4,
+      "physical_touch": 3
+    },
+    "icon": "comment-dots"
+  },
+  {
+    "name": "D",
+    "result": "Quality Time",
+    "date": "2026-02-05 20:40",
+    "share_id": "f524f695",
+    "scores": {
+      "words_of_affirmation": 4,
+      "quality_time": 5,
+      "receiving_gifts": 4,
+      "acts_of_service": 4,
+      "physical_touch": 2
+    },
+    "icon": "clock"
+  },
+  {
+    "name": "D",
+    "result": "Acts of Service",
+    "date": "2026-02-05 20:47",
+    "share_id": "62e0b89d",
+    "scores": {
+      "words_of_affirmation": 4,
+      "quality_time": 2,
+      "receiving_gifts": 2,
+      "acts_of_service": 5,
+      "physical_touch": 3
+    },
+    "icon": "hands-helping"
+  },
+  {
+    "name": "g",
+    "result": "Physical Touch",
+    "date": "2026-02-05 20:54",
+    "share_id": "f5ae5406",
+    "scores": {
+      "words_of_affirmation": 4,
+      "quality_time": 2,
+      "receiving_gifts": 3,
+      "acts_of_service": 4,
+      "physical_touch": 5
+    },
+    "icon": "hand-holding-heart"
+  },
+  {
+    "name": "d",
+    "result": "Receiving Gifts",
+    "date": "2026-02-05 20:55",
+    "share_id": "4e27443b",
+    "scores": {
+      "words_of_affirmation": 3,
+      "quality_time": 4,
+      "receiving_gifts": 5,
+      "acts_of_service": 3,
+      "physical_touch": 2
+    },
+    "icon": "gift"
+  },
+  {
+    "name": "n",
+    "result": "Acts of Service",
+    "date": "2026-02-05 21:00",
+    "share_id": "d012435a",
+    "scores": {
+      "words_of_affirmation": 4,
+      "quality_time": 3,
+      "receiving_gifts": 3,
+      "acts_of_service": 5,
+      "physical_touch": 3
+    },
+    "icon": "hands-helping"
+  },
+  {
+    "name": "c",
+    "result": "Quality Time",
+    "date": "2026-02-05 21:03",
+    "share_id": "3268e53e",
+    "scores": {
+      "words_of_affirmation": 2,
+      "quality_time": 5,
+      "receiving_gifts": 5,
+      "acts_of_service": 2,
+      "physical_touch": 1
+    },
+    "icon": "clock"
+  },
+  {
+    "name": "k",
+    "result": "Acts of Service",
+    "date": "2026-02-05 21:07",
+    "share_id": "633bfb80",
+    "scores": {
+      "words_of_affirmation": 4,
+      "quality_time": 3,
+      "receiving_gifts": 3,
+      "acts_of_service": 5,
+      "physical_touch": 4
+    },
+    "icon": "hands-helping"
+  },
+  {
+    "name": "h",
+    "result": "Acts of Service",
+    "date": "2026-02-05 21:13",
+    "share_id": "44275dc2",
+    "scores": {
+      "words_of_affirmation": 3,
+      "quality_time": 3,
+      "receiving_gifts": 3,
+      "acts_of_service": 4,
+      "physical_touch": 4
+    },
+    "icon": "hands-helping"
+  },
+  {
+    "name": "h",
+    "result": "Receiving Gifts",
+    "date": "2026-02-05 21:15",
+    "share_id": "54da2506",
+    "scores": {
+      "words_of_affirmation": 3,
+      "quality_time": 4,
+      "receiving_gifts": 5,
+      "acts_of_service": 4,
+      "physical_touch": 2
+    },
+    "icon": "gift"
+  },
+  {
+    "name": "h",
+    "result": "Quality Time",
+    "date": "2026-02-05 21:16",
+    "share_id": "4b619cc2",
+    "scores": {
+      "words_of_affirmation": 1,
+      "quality_time": 4,
+      "receiving_gifts": 4,
+      "acts_of_service": 3,
+      "physical_touch": 3
+    },
+    "icon": "clock"
+  },
+  {
+    "name": "Ugtahbayr",
+    "result": "Words of Affirmation",
+    "date": "2026-02-05 21:16",
+    "share_id": "e1cedcac",
+    "scores": {
+      "words_of_affirmation": 5,
+      "quality_time": 5,
+      "receiving_gifts": 3,
+      "acts_of_service": 2,
+      "physical_touch": 5
+    },
+    "icon": "comment-dots"
+  },
+  {
+    "name": "f",
+    "result": "Receiving Gifts",
+    "date": "2026-02-05 21:25",
+    "share_id": "e4d714fa",
+    "scores": {
+      "words_of_affirmation": 2,
+      "quality_time": 4,
+      "receiving_gifts": 5,
+      "acts_of_service": 4,
+      "physical_touch": 2
+    },
+    "icon": "gift"
+  },
+  {
+    "name": "b",
+    "result": "Physical Touch",
+    "date": "2026-02-05 21:28",
+    "share_id": "f8825b12",
+    "scores": {
+      "words_of_affirmation": 4,
+      "quality_time": 2,
+      "receiving_gifts": 1,
+      "acts_of_service": 4,
+      "physical_touch": 6
+    },
+    "icon": "hand-holding-heart"
+  },
+  {
+    "name": "d",
+    "result": "Words of Affirmation",
+    "date": "2026-02-05 21:30",
+    "share_id": "a2a11bd1",
+    "scores": {
+      "words_of_affirmation": 4,
+      "quality_time": 2,
+      "receiving_gifts": 4,
+      "acts_of_service": 4,
+      "physical_touch": 3
+    },
+    "icon": "comment-dots"
+  },
+  {
+    "name": "k",
+    "result": "Words of Affirmation",
+    "date": "2026-02-05 21:35",
+    "share_id": "79a9778e",
+    "scores": {
+      "words_of_affirmation": 4,
+      "quality_time": 4,
+      "receiving_gifts": 3,
+      "acts_of_service": 3,
+      "physical_touch": 4
+    },
+    "icon": "comment-dots"
+  },
+  {
+    "name": "f",
+    "result": "Physical Touch",
+    "date": "2026-02-05 21:36",
+    "share_id": "496ceb31",
+    "scores": {
+      "words_of_affirmation": 3,
+      "quality_time": 3,
+      "receiving_gifts": 2,
+      "acts_of_service": 3,
+      "physical_touch": 6
+    },
+    "icon": "hand-holding-heart"
+  },
+  {
+    "name": "f",
+    "result": "Words of Affirmation",
+    "date": "2026-02-05 21:41",
+    "share_id": "e7081a86",
+    "scores": {
+      "words_of_affirmation": 4,
+      "quality_time": 2,
+      "receiving_gifts": 3,
+      "acts_of_service": 3,
+      "physical_touch": 3
+    },
+    "icon": "comment-dots"
+  },
+  {
+    "name": "d",
+    "result": "Receiving Gifts",
+    "date": "2026-02-05 21:41",
+    "share_id": "6290c8f9",
+    "scores": {
+      "words_of_affirmation": 3,
+      "quality_time": 2,
+      "receiving_gifts": 4,
+      "acts_of_service": 4,
+      "physical_touch": 2
+    },
+    "icon": "gift"
+  },
+  {
+    "name": "h",
+    "result": "Words of Affirmation",
+    "date": "2026-02-05 21:44",
+    "share_id": "7a16bd78",
+    "scores": {
+      "words_of_affirmation": 4,
+      "quality_time": 3,
+      "receiving_gifts": 2,
+      "acts_of_service": 2,
+      "physical_touch": 4
+    },
+    "icon": "comment-dots"
+  },
+  {
+    "name": "n",
+    "result": "Words of Affirmation",
+    "date": "2026-02-05 21:49",
+    "share_id": "9f56ac9b",
+    "scores": {
+      "words_of_affirmation": 4,
+      "quality_time": 3,
+      "receiving_gifts": 1,
+      "acts_of_service": 3,
+      "physical_touch": 4
+    },
+    "icon": "comment-dots"
+  },
+  {
+    "name": "f",
+    "result": "Words of Affirmation",
+    "date": "2026-02-05 21:51",
+    "share_id": "27710a1b",
+    "scores": {
+      "words_of_affirmation": 4,
+      "quality_time": 3,
+      "receiving_gifts": 2,
+      "acts_of_service": 2,
+      "physical_touch": 4
+    },
+    "icon": "comment-dots"
+  },
+  {
+    "name": "Dulguun Suhchuluun",
+    "result": "Receiving Gifts",
+    "date": "2026-02-05 21:54",
+    "share_id": "44fd79be",
+    "scores": {
+      "words_of_affirmation": 2,
+      "quality_time": 3,
+      "receiving_gifts": 4,
+      "acts_of_service": 4,
+      "physical_touch": 2
+    },
+    "icon": "gift"
+  },
+  {
+    "name": "s",
+    "result": "Physical Touch",
+    "date": "2026-02-05 21:55",
+    "share_id": "d6e355b0",
+    "scores": {
+      "words_of_affirmation": 3,
+      "quality_time": 1,
+      "receiving_gifts": 4,
+      "acts_of_service": 3,
+      "physical_touch": 5
+    },
+    "icon": "hand-holding-heart"
+  },
+  {
+    "name": "n",
+    "result": "Receiving Gifts",
+    "date": "2026-02-05 21:57",
+    "share_id": "2b3d9e2d",
+    "scores": {
+      "words_of_affirmation": 3,
+      "quality_time": 3,
+      "receiving_gifts": 5,
+      "acts_of_service": 2,
+      "physical_touch": 2
+    },
+    "icon": "gift"
+  },
+  {
+    "name": "h",
+    "result": "Physical Touch",
+    "date": "2026-02-05 22:00",
+    "share_id": "053e5346",
+    "scores": {
+      "words_of_affirmation": 3,
+      "quality_time": 1,
+      "receiving_gifts": 2,
+      "acts_of_service": 4,
+      "physical_touch": 5
+    },
+    "icon": "hand-holding-heart"
+  },
+  {
+    "name": "d",
+    "result": "Quality Time",
+    "date": "2026-02-05 22:05",
+    "share_id": "48e2ad13",
+    "scores": {
+      "words_of_affirmation": 3,
+      "quality_time": 4,
+      "receiving_gifts": 2,
+      "acts_of_service": 3,
+      "physical_touch": 3
+    },
+    "icon": "clock"
+  },
+  {
+    "name": "n",
+    "result": "Words of Affirmation",
+    "date": "2026-02-05 22:24",
+    "share_id": "b0c28937",
+    "scores": {
+      "words_of_affirmation": 4,
+      "quality_time": 3,
+      "receiving_gifts": 2,
+      "acts_of_service": 2,
+      "physical_touch": 4
+    },
+    "icon": "comment-dots"
   }
 ]

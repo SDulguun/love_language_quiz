@@ -126,22 +126,18 @@
 
         function playClickSound() {
             if (soundEnabled) {
-                const sound = document.getElementById('clickSound');
-                if (sound) {
-                    sound.currentTime = 0;
-                    sound.play().catch(() => {});
-                }
+                // Create new Audio instance to avoid interrupting background music
+                const sound = new Audio("{{ url_for('static', filename='audio/click.mp3') }}");
+                sound.volume = 0.15;
+                sound.play().catch(() => {});
             }
         }
 
         function playCelebrationSound() {
-            if (soundEnabled) {
-                const sound = document.getElementById('celebrationSound');
-                if (sound) {
-                    sound.currentTime = 0;
-                    sound.play().catch(() => {});
-                }
-            }
+            // Always play celebration sound (it's a reward!)
+            const sound = new Audio("{{ url_for('static', filename='audio/celebration.mp3') }}");
+            sound.volume = 0.4;
+            sound.play().catch((e) => console.log('Celebration sound error:', e));
         }
 
         // Initialize sound icon on page load
@@ -150,6 +146,7 @@
         // Background music management
         let musicEnabled = localStorage.getItem('musicEnabled') === 'true';
         const bgMusic = document.getElementById('bgMusic');
+        let musicStarted = false;
 
         function updateMusicIcon() {
             const icon = document.getElementById('musicIcon');
@@ -159,37 +156,68 @@
             }
         }
 
+        function startMusic() {
+            if (bgMusic && musicEnabled && !musicStarted) {
+                bgMusic.volume = 0.3;
+                // Restore saved position
+                const savedTime = parseFloat(localStorage.getItem('musicTime')) || 0;
+                if (savedTime > 0) {
+                    bgMusic.currentTime = savedTime;
+                }
+                bgMusic.play().then(() => {
+                    musicStarted = true;
+                }).catch(() => {});
+            } else if (bgMusic && musicEnabled && bgMusic.paused) {
+                bgMusic.play().catch(() => {});
+            }
+        }
+
         function toggleMusic() {
             musicEnabled = !musicEnabled;
             localStorage.setItem('musicEnabled', musicEnabled);
             updateMusicIcon();
             if (musicEnabled) {
-                bgMusic.volume = 0.3;
-                bgMusic.play().catch(() => {});
+                musicStarted = false;
+                startMusic();
             } else {
                 bgMusic.pause();
             }
         }
 
-        // Initialize music on page load
+        // Save position every 500ms while playing
+        setInterval(function() {
+            if (bgMusic && !bgMusic.paused && musicEnabled) {
+                localStorage.setItem('musicTime', bgMusic.currentTime);
+            }
+        }, 500);
+
+        // Save position before page unloads
+        window.addEventListener('beforeunload', function() {
+            if (bgMusic && musicEnabled && !bgMusic.paused) {
+                localStorage.setItem('musicTime', bgMusic.currentTime);
+            }
+        });
+
+        // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
             updateMusicIcon();
             if (bgMusic) {
                 bgMusic.volume = 0.3;
-            }
-            // Auto-play music if enabled (requires user interaction first)
-            if (musicEnabled && bgMusic) {
-                bgMusic.play().catch(() => {});
+                // Try to auto-play immediately
+                if (musicEnabled) {
+                    startMusic();
+                }
             }
         });
 
-        // Start music on first user interaction if enabled
-        document.addEventListener('click', function initMusic() {
-            if (musicEnabled && bgMusic && bgMusic.paused) {
-                bgMusic.volume = 0.3;
-                bgMusic.play().catch(() => {});
-            }
-        }, { once: true });
+        // Resume music on ANY user interaction
+        ['click', 'touchstart', 'keydown', 'mousemove', 'scroll'].forEach(function(event) {
+            document.addEventListener(event, function resumeMusic() {
+                if (musicEnabled && bgMusic && bgMusic.paused) {
+                    startMusic();
+                }
+            }, { once: false, passive: true });
+        });
     </script>
 </body>
 </html>
