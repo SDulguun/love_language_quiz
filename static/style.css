@@ -2259,4 +2259,113 @@ h1 {
     .tips-section {
         padding: 18px;
     }
+
+    .playlist-section {
+        padding: 18px;
+    }
+
+    .playlist-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Spotify Playlist Section */
+.playlist-section {
+    background: linear-gradient(135deg, rgba(30, 215, 96, 0.08) 0%, rgba(30, 215, 96, 0.04) 100%);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.playlist-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #2d3436;
+    margin-bottom: 16px;
+}
+
+.playlist-title i {
+    color: #1DB954;
+    font-size: 20px;
+}
+
+.playlist-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.playlist-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: white;
+    padding: 14px 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.playlist-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(30, 215, 96, 0.15);
+    border-color: rgba(30, 215, 96, 0.3);
+}
+
+.playlist-icon {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, #1DB954 0%, #1ed760 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.playlist-icon i {
+    font-size: 22px;
+    color: white;
+}
+
+.playlist-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.playlist-name {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2d3436;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.playlist-desc {
+    display: block;
+    font-size: 12px;
+    color: #636e72;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.playlist-link-icon {
+    font-size: 12px;
+    color: #b2bec3;
+    flex-shrink: 0;
+    transition: color 0.2s;
+}
+
+.playlist-card:hover .playlist-link-icon {
+    color: #1DB954;
 }

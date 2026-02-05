@@ -12,6 +12,7 @@ from display import (
     get_what_this_means,
     get_tips,
     get_partner_tips,
+    get_playlists,
     get_top_two,
     format_scores_for_display,
     get_all_languages
@@ -255,6 +256,7 @@ def result():
         what_this_means=get_what_this_means(dominant),
         tips=get_tips(dominant),
         partner_tips=get_partner_tips(dominant, context),
+        playlists=get_playlists(dominant),
         context_label=context_labels.get(context, "Your Partner"),
         primary_name=get_language_name(primary_key),
         primary_icon=get_language_icon(primary_key),

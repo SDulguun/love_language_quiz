@@ -52,6 +52,11 @@ LANGUAGE_INFO = {
             "Writing love letters or notes",
             "Verbal encouragement and support",
             "Expressing gratitude out loud"
+        ],
+        "playlists": [
+            {"name": "Love Songs with Lyrics", "url": "https://open.spotify.com/playlist/37i9dQZF1DX50QitC6Oqtn", "description": "Romantic lyrics to speak to your heart"},
+            {"name": "Acoustic Love", "url": "https://open.spotify.com/playlist/37i9dQZF1DWTvNyxOwkztu", "description": "Gentle words of love and affirmation"},
+            {"name": "All Out Love", "url": "https://open.spotify.com/playlist/37i9dQZF1DX6mvEU1S6INL", "description": "Classic love songs with meaningful lyrics"}
         ]
     },
     "quality_time": {
@@ -102,6 +107,11 @@ LANGUAGE_INFO = {
             "Sharing hobbies and activities",
             "Making eye contact when talking",
             "Planning dedicated date nights"
+        ],
+        "playlists": [
+            {"name": "Cozy Coffeehouse", "url": "https://open.spotify.com/playlist/37i9dQZF1DX6ziVCWnEVZM", "description": "Perfect background for quality time together"},
+            {"name": "Date Night", "url": "https://open.spotify.com/playlist/37i9dQZF1DX4xuWVBs4FgJ", "description": "Set the mood for your special moments"},
+            {"name": "Evening Acoustic", "url": "https://open.spotify.com/playlist/37i9dQZF1DXbJmiEZs5p2i", "description": "Relaxing tunes for togetherness"}
         ]
     },
     "receiving_gifts": {
@@ -152,6 +162,11 @@ LANGUAGE_INFO = {
             "Picking up small 'thinking of you' gifts",
             "Creating handmade presents",
             "Keeping meaningful mementos"
+        ],
+        "playlists": [
+            {"name": "Feel Good Pop", "url": "https://open.spotify.com/playlist/37i9dQZF1DX3rxVfibe1L0", "description": "Upbeat celebration vibes"},
+            {"name": "Happy Hits", "url": "https://open.spotify.com/playlist/37i9dQZF1DXdPec7aLTmlC", "description": "Songs that make you smile"},
+            {"name": "Good Vibes", "url": "https://open.spotify.com/playlist/37i9dQZF1DX0UrRvztWcAU", "description": "Feel-good tracks for special moments"}
         ]
     },
     "acts_of_service": {
@@ -202,6 +217,11 @@ LANGUAGE_INFO = {
             "Running errands without being asked",
             "Taking care of car maintenance",
             "Helping with a difficult project"
+        ],
+        "playlists": [
+            {"name": "Motivation Mix", "url": "https://open.spotify.com/playlist/37i9dQZF1DXdxcBWuJkbcy", "description": "Energizing tracks to power through tasks"},
+            {"name": "Songs to Sing in the Car", "url": "https://open.spotify.com/playlist/37i9dQZF1DWWMOmoXKqHTD", "description": "Uplifting music for errands and chores"},
+            {"name": "Productive Morning", "url": "https://open.spotify.com/playlist/37i9dQZF1DX0SM0LYsmbMT", "description": "Start your day of service right"}
         ]
     },
     "physical_touch": {
@@ -252,6 +272,11 @@ LANGUAGE_INFO = {
             "Cuddling on the couch",
             "A gentle touch on the arm",
             "Back rubs after a long day"
+        ],
+        "playlists": [
+            {"name": "Slow Dance", "url": "https://open.spotify.com/playlist/37i9dQZF1DX7rOY2tZUw1k", "description": "Intimate slow dance classics"},
+            {"name": "Chill R&B", "url": "https://open.spotify.com/playlist/37i9dQZF1DX2UgsUIg75Vg", "description": "Smooth vibes for closeness"},
+            {"name": "Bedroom Pop", "url": "https://open.spotify.com/playlist/37i9dQZF1DXcxvFzl58uP7", "description": "Cozy intimate atmosphere"}
         ]
     }
 }
@@ -383,6 +408,11 @@ def get_partner_tips(key, context):
     """Get partner tips based on love language and relationship context."""
     tips = LANGUAGE_INFO.get(key, {}).get("partner_tips", {})
     return tips.get(context, tips.get("romantic", []))
+
+
+def get_playlists(key):
+    """Get Spotify playlist recommendations for a love language."""
+    return LANGUAGE_INFO.get(key, {}).get("playlists", [])
 
 
 def get_all_languages():
