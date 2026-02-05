@@ -13,6 +13,7 @@ from display import (
     get_tips,
     get_partner_tips,
     get_playlists,
+    get_context_comparison,
     get_top_two,
     format_scores_for_display,
     get_all_languages
@@ -257,6 +258,7 @@ def result():
         tips=get_tips(dominant),
         partner_tips=get_partner_tips(dominant, context),
         playlists=get_playlists(dominant),
+        context_comparison=get_context_comparison(dominant, context),
         context_label=context_labels.get(context, "Your Partner"),
         primary_name=get_language_name(primary_key),
         primary_icon=get_language_icon(primary_key),
