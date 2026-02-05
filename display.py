@@ -336,6 +336,83 @@ COMPATIBILITY_TIPS = {
 }
 
 
+CONTEXT_COMPARISONS = {
+    "words_of_affirmation": {
+        "romantic": "In romantic relationships, you crave verbal expressions of love — hearing 'I love you' and receiving heartfelt compliments.",
+        "family": "With family, you value words of pride and encouragement — knowing they believe in you matters deeply.",
+        "friend": "Among friends, you appreciate genuine compliments and messages that affirm your importance in their life.",
+        "workplace": "At work, you thrive on specific praise and recognition — verbal acknowledgment of your contributions motivates you.",
+        "long_distance": "In long-distance relationships, voice messages and heartfelt texts help you feel connected across the miles."
+    },
+    "quality_time": {
+        "romantic": "In romantic relationships, you treasure undivided attention — date nights and phone-free moments together.",
+        "family": "With family, you value shared meals and being truly present at important events.",
+        "friend": "Among friends, you appreciate when they initiate plans and give you their full attention.",
+        "workplace": "At work, you value one-on-one meetings and collaborative time working side by side.",
+        "long_distance": "In long-distance relationships, scheduled video calls and doing activities together remotely keep you connected."
+    },
+    "receiving_gifts": {
+        "romantic": "In romantic relationships, thoughtful surprises and remembered anniversaries make you feel cherished.",
+        "family": "With family, meaningful souvenirs and personalized presents show they were thinking of you.",
+        "friend": "Among friends, small 'thinking of you' gifts and remembered favorites warm your heart.",
+        "workplace": "At work, you appreciate tokens of appreciation and colleagues who remember your preferences.",
+        "long_distance": "In long-distance relationships, care packages and surprise deliveries bridge the physical gap."
+    },
+    "acts_of_service": {
+        "romantic": "In romantic relationships, you feel loved when your partner handles tasks without being asked.",
+        "family": "With family, helping hands during busy times and shared responsibilities show care.",
+        "friend": "Among friends, you value those who show up to help — actions speak louder than words.",
+        "workplace": "At work, colleagues who pitch in during crunch time and follow through on commitments earn your trust.",
+        "long_distance": "In long-distance relationships, coordinating things from afar and handling shared tasks shows dedication."
+    },
+    "physical_touch": {
+        "romantic": "In romantic relationships, holding hands, hugs, and physical closeness make you feel secure and loved.",
+        "family": "With family, warm embraces and sitting close during gatherings strengthen your bond.",
+        "friend": "Among friends, greeting hugs and high-fives show affection and celebration.",
+        "workplace": "At work, appropriate gestures like handshakes and celebratory high-fives build connection.",
+        "long_distance": "In long-distance relationships, reunion hugs and physical presence during visits are precious moments."
+    }
+}
+
+
+def get_context_comparison(language_key, current_context):
+    """Get context-based comparison text for a love language."""
+    language_name = get_language_name(language_key)
+    current_insight = CONTEXT_COMPARISONS.get(language_key, {}).get(current_context, "")
+
+    # Get a contrasting context for comparison
+    context_order = ["romantic", "workplace", "family", "friend", "long_distance"]
+    other_contexts = [c for c in context_order if c != current_context]
+
+    # Pick a contrasting context (workplace vs romantic, etc.)
+    if current_context == "romantic":
+        contrast_context = "workplace"
+    elif current_context == "workplace":
+        contrast_context = "romantic"
+    elif current_context == "family":
+        contrast_context = "friend"
+    else:
+        contrast_context = "romantic"
+
+    contrast_insight = CONTEXT_COMPARISONS.get(language_key, {}).get(contrast_context, "")
+
+    context_labels = {
+        "romantic": "romantic relationships",
+        "family": "family connections",
+        "friend": "friendships",
+        "workplace": "the workplace",
+        "long_distance": "long-distance relationships"
+    }
+
+    return {
+        "current_context": context_labels.get(current_context, current_context),
+        "current_insight": current_insight,
+        "contrast_context": context_labels.get(contrast_context, contrast_context),
+        "contrast_insight": contrast_insight,
+        "language_name": language_name
+    }
+
+
 def get_compatibility_tip(lang1, lang2):
     """Get compatibility insight for a pair of love languages."""
     key = frozenset([lang1, lang2])

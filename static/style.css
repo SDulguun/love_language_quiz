@@ -1205,6 +1205,74 @@ h1 {
     color: #b070b0;
 }
 
+/* Context Comparison Section */
+.context-comparison-section {
+    background: linear-gradient(135deg, rgba(100, 149, 237, 0.08) 0%, rgba(147, 112, 219, 0.08) 100%);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.context-comparison-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #2d3436;
+    margin-bottom: 16px;
+}
+
+.context-comparison-title i {
+    color: #6495ed;
+}
+
+.context-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.context-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    border-left: 4px solid;
+}
+
+.context-card.current-context {
+    border-left-color: var(--primary);
+}
+
+.context-card.contrast-context {
+    border-left-color: #6495ed;
+}
+
+.context-card-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.current-context .context-card-label {
+    color: var(--primary);
+}
+
+.contrast-context .context-card-label {
+    color: #6495ed;
+}
+
+.context-card-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #3d4448;
+    margin: 0;
+}
+
 /* Chart Legend */
 .chart-legend {
     margin-top: 16px;
