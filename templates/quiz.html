@@ -36,20 +36,49 @@
     <p class="question-text fade-in-up">{{ question.question }}</p>
 
     <div class="options fade-in-up" style="animation-delay: 0.2s;">
-        <form action="{{ url_for('answer') }}" method="POST">
-            <button type="submit" name="choice" value="A" class="option-btn" onclick="playClickSound()">
+        <form id="quizForm" action="{{ url_for('answer') }}" method="POST">
+            <button type="submit" name="choice" value="A" class="option-btn" id="optionA" onclick="playClickSound()">
                 <i class="fa-solid fa-a"></i>
                 <span class="option-text">{{ question.options.A }}</span>
+                <span class="keyboard-hint">Press A or 1</span>
             </button>
-            <button type="submit" name="choice" value="B" class="option-btn" onclick="playClickSound()">
+            <button type="submit" name="choice" value="B" class="option-btn" id="optionB" onclick="playClickSound()">
                 <i class="fa-solid fa-b"></i>
                 <span class="option-text">{{ question.options.B }}</span>
+                <span class="keyboard-hint">Press B or 2</span>
             </button>
-            <button type="submit" name="choice" value="BOTH" class="option-btn option-both" onclick="playClickSound()">
+            <button type="submit" name="choice" value="BOTH" class="option-btn option-both" id="optionBoth" onclick="playClickSound()">
                 <i class="fa-solid fa-heart"></i>
                 <span class="option-text">Both apply to me equally</span>
+                <span class="keyboard-hint">Press C or 3</span>
             </button>
         </form>
     </div>
+
+    <p class="keyboard-nav-hint">
+        <i class="fa-solid fa-keyboard"></i>
+        Use keyboard: A/1, B/2, C/3 to answer
+    </p>
 </div>
+
+<script>
+document.addEventListener('keydown', function(e) {
+    const key = e.key.toLowerCase();
+    let button = null;
+
+    if (key === 'a' || key === '1') {
+        button = document.getElementById('optionA');
+    } else if (key === 'b' || key === '2') {
+        button = document.getElementById('optionB');
+    } else if (key === 'c' || key === '3') {
+        button = document.getElementById('optionBoth');
+    }
+
+    if (button) {
+        button.classList.add('keyboard-selected');
+        playClickSound();
+        setTimeout(() => button.click(), 150);
+    }
+});
+</script>
 {% endblock %}
