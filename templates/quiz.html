@@ -75,6 +75,7 @@ document.addEventListener('keydown', function(e) {
     }
 
     if (button) {
+        // Add visual feedback
         button.classList.add('keyboard-selected');
         playClickSound();
         setTimeout(() => button.click(), 150);
