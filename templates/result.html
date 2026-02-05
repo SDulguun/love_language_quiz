@@ -1,96 +1,132 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container result-page">
-    <div class="result-image-container fade-in-up" style="animation-delay: 0.1s">
-        <img src="{{ url_for('static', filename=image) }}" alt="{{ language }}" class="result-image">
+<div class="container result-page result-two-column">
+    <!-- Left Column -->
+    <div class="result-left">
+        <div class="result-image-container fade-in-up" style="animation-delay: 0.1s">
+            <img src="{{ url_for('static', filename=image) }}" alt="{{ language }}" class="result-image">
+        </div>
+
+        <p class="result-label fade-in-up" style="animation-delay: 0.2s">{{ name }}, your love language is</p>
+        <h1 class="result-language fade-in-up" style="animation-delay: 0.3s">
+            <i class="fa-solid fa-{{ icon }}"></i> {{ language }}
+        </h1>
+
+        <!-- Top 2 Languages Highlight -->
+        <div class="top-languages fade-in-up" style="animation-delay: 0.4s">
+            <div class="top-lang primary-lang">
+                <span class="top-lang-label">Primary</span>
+                <span class="top-lang-name"><i class="fa-solid fa-{{ primary_icon }}"></i> {{ primary_name }}</span>
+            </div>
+            {% if secondary_name %}
+            <div class="top-lang secondary-lang">
+                <span class="top-lang-label">Secondary</span>
+                <span class="top-lang-name"><i class="fa-solid fa-{{ secondary_icon }}"></i> {{ secondary_name }}</span>
+            </div>
+            {% endif %}
+        </div>
+
+        <p class="result-description fade-in-up" style="animation-delay: 0.5s">{{ description }}</p>
+
+        <!-- Practical Tips -->
+        <div class="tips-section fade-in-up" style="animation-delay: 0.7s">
+            <h3 class="tips-title">
+                <i class="fa-solid fa-star"></i>
+                3 Tips for You
+            </h3>
+            <ul class="tips-list">
+                {% for tip in tips %}
+                <li>
+                    <i class="fa-solid fa-check-circle"></i>
+                    <span>{{ tip }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Partner Tips -->
+        <div class="tips-section partner-tips fade-in-up" style="animation-delay: 0.8s">
+            <h3 class="tips-title">
+                <i class="fa-solid fa-users"></i>
+                Tips for {{ context_label }}
+            </h3>
+            <ul class="tips-list">
+                {% for tip in partner_tips %}
+                <li>
+                    <i class="fa-solid fa-heart-circle-check"></i>
+                    <span>{{ tip }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 
-    <p class="result-label fade-in-up" style="animation-delay: 0.2s">{{ name }}, your love language is</p>
-    <h1 class="result-language fade-in-up" style="animation-delay: 0.3s">
-        <i class="fa-solid fa-{{ icon }}"></i> {{ language }}
-    </h1>
-
-    <!-- Top 2 Languages Highlight -->
-    <div class="top-languages fade-in-up" style="animation-delay: 0.4s">
-        <div class="top-lang primary-lang">
-            <span class="top-lang-label">Primary</span>
-            <span class="top-lang-name"><i class="fa-solid fa-{{ primary_icon }}"></i> {{ primary_name }}</span>
+    <!-- Right Column -->
+    <div class="result-right">
+        <!-- Doughnut Chart -->
+        <div class="chart-container fade-in-up" style="animation-delay: 0.6s">
+            <p class="chart-title">
+                <i class="fa-solid fa-chart-pie"></i>
+                Your Love Language Breakdown
+            </p>
+            <canvas id="scoreChart"></canvas>
+            <div class="chart-legend">
+                {% for item in scores %}
+                <div class="legend-item">
+                    <span class="legend-dot" style="background: {{ ['#ff6b8a','#ff8e72','#ffb6c1','#ffdab9','#dda0dd'][loop.index0 % 5] }};"></span>
+                    <i class="fa-solid fa-{{ item.icon }} legend-icon"></i>
+                    <span class="legend-name">{{ item.name }}</span>
+                    <span class="legend-value">{{ item.score }} ({{ item.percent }}%)</span>
+                </div>
+                {% endfor %}
+            </div>
         </div>
-        {% if secondary_name %}
-        <div class="top-lang secondary-lang">
-            <span class="top-lang-label">Secondary</span>
-            <span class="top-lang-name"><i class="fa-solid fa-{{ secondary_icon }}"></i> {{ secondary_name }}</span>
+
+        <div class="scores-section fade-in-up" style="animation-delay: 0.8s">
+            <h3 class="scores-title">
+                <i class="fa-solid fa-chart-simple"></i>
+                All Your Scores
+            </h3>
+            {% for item in scores %}
+            <div class="score-row">
+                <div class="score-header">
+                    <i class="fa-solid fa-{{ item.icon }}"></i>
+                    <span class="score-name">{{ item.name }}</span>
+                    <span class="score-value">{{ item.score }}</span>
+                </div>
+                <div class="score-bar-container">
+                    <div class="score-bar" style="width: {{ (item.score / total_answers * 100)|int }}%"></div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Context Comparison -->
+        {% if context_comparison %}
+        <div class="context-comparison-section fade-in-up" style="animation-delay: 0.85s">
+            <h3 class="context-comparison-title">
+                <i class="fa-solid fa-shuffle"></i>
+                {{ context_comparison.language_name }} Across Contexts
+            </h3>
+            <div class="context-cards">
+                <div class="context-card current-context">
+                    <span class="context-card-label">In {{ context_comparison.current_context }}</span>
+                    <p class="context-card-text">{{ context_comparison.current_insight }}</p>
+                </div>
+                <div class="context-card contrast-context">
+                    <span class="context-card-label">In {{ context_comparison.contrast_context }}</span>
+                    <p class="context-card-text">{{ context_comparison.contrast_insight }}</p>
+                </div>
+            </div>
         </div>
         {% endif %}
+
     </div>
 
-    <p class="result-description fade-in-up" style="animation-delay: 0.5s">{{ description }}</p>
-
-    <!-- What This Means -->
-    <div class="insight-section fade-in-up" style="animation-delay: 0.6s">
-        <h3 class="insight-title">
-            <i class="fa-solid fa-lightbulb"></i>
-            What This Means
-        </h3>
-        <p class="insight-text">{{ what_this_means }}</p>
-    </div>
-
-    <!-- Practical Tips -->
-    <div class="tips-section fade-in-up" style="animation-delay: 0.7s">
-        <h3 class="tips-title">
-            <i class="fa-solid fa-star"></i>
-            3 Tips for You
-        </h3>
-        <ul class="tips-list">
-            {% for tip in tips %}
-            <li>
-                <i class="fa-solid fa-check-circle"></i>
-                <span>{{ tip }}</span>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
-
-    <!-- Partner Tips -->
-    <div class="tips-section partner-tips fade-in-up" style="animation-delay: 0.8s">
-        <h3 class="tips-title">
-            <i class="fa-solid fa-users"></i>
-            Tips for {{ context_label }}
-        </h3>
-        <ul class="tips-list">
-            {% for tip in partner_tips %}
-            <li>
-                <i class="fa-solid fa-heart-circle-check"></i>
-                <span>{{ tip }}</span>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
-
-    <!-- Context Comparison -->
-    {% if context_comparison %}
-    <div class="context-comparison-section fade-in-up" style="animation-delay: 0.85s">
-        <h3 class="context-comparison-title">
-            <i class="fa-solid fa-shuffle"></i>
-            {{ context_comparison.language_name }} Across Contexts
-        </h3>
-        <div class="context-cards">
-            <div class="context-card current-context">
-                <span class="context-card-label">In {{ context_comparison.current_context }}</span>
-                <p class="context-card-text">{{ context_comparison.current_insight }}</p>
-            </div>
-            <div class="context-card contrast-context">
-                <span class="context-card-label">In {{ context_comparison.contrast_context }}</span>
-                <p class="context-card-text">{{ context_comparison.contrast_insight }}</p>
-            </div>
-        </div>
-    </div>
-    {% endif %}
-
-    <!-- Spotify Playlists -->
+    <!-- Spotify Playlists (full width) -->
     {% if playlists %}
-    <div class="playlist-section fade-in-up" style="animation-delay: 0.87s">
+    <div class="playlist-section playlist-full-width fade-in-up" style="animation-delay: 0.87s">
         <h3 class="playlist-title">
             <i class="fa-brands fa-spotify"></i>
             Playlists for Your Love Language
@@ -112,19 +148,27 @@
     </div>
     {% endif %}
 
-    <div class="share-section fade-in-up" style="animation-delay: 0.9s">
-        <p class="share-label">Share your result</p>
-        <div class="share-buttons">
-            <a href="https://twitter.com/intent/tweet?text=I%20just%20discovered%20my%20love%20language%20is%20{{ language|urlencode }}!%20Take%20the%20quiz%20to%20find%20yours!%20{{ request.url_root }}share/{{ share_id }}" target="_blank" class="share-btn twitter" title="Share on Twitter">
-                <i class="fa-brands fa-twitter"></i>
-            </a>
-            <button class="share-btn copy" onclick="copyShareLink()" title="Copy share link">
-                <i class="fa-solid fa-link"></i>
-            </button>
-            <button class="share-btn download" onclick="downloadCard()" title="Download as image">
-                <i class="fa-solid fa-download"></i>
-            </button>
+    <!-- Bottom Section (full width) -->
+    <div class="result-bottom">
+        <div class="share-section fade-in-up" style="animation-delay: 0.9s">
+            <p class="share-label">Share your result</p>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=I%20just%20discovered%20my%20love%20language%20is%20{{ language|urlencode }}!%20Take%20the%20quiz%20to%20find%20yours!%20{{ request.url_root }}share/{{ share_id }}" target="_blank" class="share-btn twitter" title="Share on Twitter">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+                <button class="share-btn copy" onclick="copyShareLink()" title="Copy share link">
+                    <i class="fa-solid fa-link"></i>
+                </button>
+                <button class="share-btn download" onclick="downloadCard()" title="Download as image">
+                    <i class="fa-solid fa-download"></i>
+                </button>
+            </div>
         </div>
+
+        <a href="{{ url_for('home') }}" class="btn fade-in-up" style="animation-delay: 1.0s">
+            <i class="fa-solid fa-rotate-left"></i>
+            Take Again
+        </a>
     </div>
 
     <!-- Hidden card for image download -->
@@ -153,49 +197,6 @@
             <p class="share-card-footer">Take the quiz at lovelanguagequiz.com</p>
         </div>
     </div>
-
-    <!-- Doughnut Chart -->
-    <div class="chart-container fade-in-up" style="animation-delay: 1.0s">
-        <p class="chart-title">
-            <i class="fa-solid fa-chart-pie"></i>
-            Your Love Language Breakdown
-        </p>
-        <canvas id="scoreChart"></canvas>
-        <div class="chart-legend">
-            {% for item in scores %}
-            <div class="legend-item">
-                <span class="legend-dot" style="background: {{ ['#ff6b8a','#ff8e72','#ffb6c1','#ffdab9','#dda0dd'][loop.index0 % 5] }};"></span>
-                <i class="fa-solid fa-{{ item.icon }} legend-icon"></i>
-                <span class="legend-name">{{ item.name }}</span>
-                <span class="legend-value">{{ item.score }} ({{ item.percent }}%)</span>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-
-    <div class="scores-section fade-in-up" style="animation-delay: 1.1s">
-        <h3 class="scores-title">
-            <i class="fa-solid fa-chart-simple"></i>
-            All Your Scores
-        </h3>
-        {% for item in scores %}
-        <div class="score-row">
-            <div class="score-header">
-                <i class="fa-solid fa-{{ item.icon }}"></i>
-                <span class="score-name">{{ item.name }}</span>
-                <span class="score-value">{{ item.score }}</span>
-            </div>
-            <div class="score-bar-container">
-                <div class="score-bar" style="width: {{ (item.score / total_answers * 100)|int }}%"></div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-
-    <a href="{{ url_for('home') }}" class="btn fade-in-up" style="animation-delay: 1.2s">
-        <i class="fa-solid fa-rotate-left"></i>
-        Take Again
-    </a>
 </div>
 
 <script>
@@ -271,7 +272,26 @@ function createChart() {
 window.onload = function() {
     launchConfetti();
     createChart();
-    playCelebrationSound();
+
+    // Play glitter sound on first user interaction (browsers block auto-play)
+    const glitterSound = new Audio("{{ url_for('static', filename='audio/celebration.mp3') }}");
+    glitterSound.volume = 1.0;
+
+    function playGlitter() {
+        glitterSound.play().catch(() => {});
+        // Remove listeners after playing once
+        ['click', 'touchstart', 'mousemove', 'scroll'].forEach(evt => {
+            document.removeEventListener(evt, playGlitter);
+        });
+    }
+
+    // Try to play immediately
+    glitterSound.play().catch(() => {
+        // If blocked, wait for user interaction
+        ['click', 'touchstart', 'mousemove', 'scroll'].forEach(evt => {
+            document.addEventListener(evt, playGlitter, { once: false, passive: true });
+        });
+    });
 };
 </script>
 {% endblock %}
