@@ -1,7 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
+<div class="container quiz-container">
+    <!-- Cute Hello Kitty GIF sticker -->
+    <div class="quiz-sticker sticker-left">
+        <img src="https://media0.giphy.com/media/10a8AOSeP6Rqfu/giphy.gif" alt="" class="kawaii-gif">
+    </div>
+
+    <div class="quiz-sticker sticker-right">
+        <div class="hearts-pattern">
+            <i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-heart"></i>
+        </div>
+    </div>
+
     <a href="{% if current > 0 %}{{ url_for('go_back') }}{% else %}{{ url_for('home') }}{% endif %}" class="back-btn">
         <i class="fa-solid fa-arrow-left"></i>
         Back
@@ -20,15 +37,15 @@
 
     <div class="options fade-in-up" style="animation-delay: 0.2s;">
         <form action="{{ url_for('answer') }}" method="POST">
-            <button type="submit" name="choice" value="A" class="option-btn">
+            <button type="submit" name="choice" value="A" class="option-btn" onclick="playClickSound()">
                 <i class="fa-solid fa-a"></i>
                 <span class="option-text">{{ question.options.A }}</span>
             </button>
-            <button type="submit" name="choice" value="B" class="option-btn">
+            <button type="submit" name="choice" value="B" class="option-btn" onclick="playClickSound()">
                 <i class="fa-solid fa-b"></i>
                 <span class="option-text">{{ question.options.B }}</span>
             </button>
-            <button type="submit" name="choice" value="BOTH" class="option-btn option-both">
+            <button type="submit" name="choice" value="BOTH" class="option-btn option-both" onclick="playClickSound()">
                 <i class="fa-solid fa-heart"></i>
                 <span class="option-text">Both apply to me equally</span>
             </button>

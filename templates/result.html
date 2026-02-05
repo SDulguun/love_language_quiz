@@ -68,6 +68,50 @@
         </ul>
     </div>
 
+    <!-- Context Comparison -->
+    {% if context_comparison %}
+    <div class="context-comparison-section fade-in-up" style="animation-delay: 0.85s">
+        <h3 class="context-comparison-title">
+            <i class="fa-solid fa-shuffle"></i>
+            {{ context_comparison.language_name }} Across Contexts
+        </h3>
+        <div class="context-cards">
+            <div class="context-card current-context">
+                <span class="context-card-label">In {{ context_comparison.current_context }}</span>
+                <p class="context-card-text">{{ context_comparison.current_insight }}</p>
+            </div>
+            <div class="context-card contrast-context">
+                <span class="context-card-label">In {{ context_comparison.contrast_context }}</span>
+                <p class="context-card-text">{{ context_comparison.contrast_insight }}</p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Spotify Playlists -->
+    {% if playlists %}
+    <div class="playlist-section fade-in-up" style="animation-delay: 0.87s">
+        <h3 class="playlist-title">
+            <i class="fa-brands fa-spotify"></i>
+            Playlists for Your Love Language
+        </h3>
+        <div class="playlist-grid">
+            {% for playlist in playlists %}
+            <a href="{{ playlist.url }}" target="_blank" rel="noopener noreferrer" class="playlist-card">
+                <div class="playlist-icon">
+                    <i class="fa-brands fa-spotify"></i>
+                </div>
+                <div class="playlist-info">
+                    <span class="playlist-name">{{ playlist.name }}</span>
+                    <span class="playlist-desc">{{ playlist.description }}</span>
+                </div>
+                <i class="fa-solid fa-external-link-alt playlist-link-icon"></i>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
     <div class="share-section fade-in-up" style="animation-delay: 0.9s">
         <p class="share-label">Share your result</p>
         <div class="share-buttons">
@@ -227,6 +271,7 @@ function createChart() {
 window.onload = function() {
     launchConfetti();
     createChart();
+    playCelebrationSound();
 };
 </script>
 {% endblock %}

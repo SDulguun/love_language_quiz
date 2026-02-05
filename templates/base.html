@@ -6,7 +6,7 @@
     <title>Love Language Quiz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <!-- Chart.js for score visualization -->
@@ -37,12 +37,32 @@
         <div class="heart-float"><i class="fa-solid fa-heart"></i></div>
     </div>
 
+    <!-- Audio elements for sound effects -->
+    <audio id="clickSound" preload="auto">
+        <source src="{{ url_for('static', filename='audio/click.mp3') }}" type="audio/mpeg">
+    </audio>
+    <audio id="celebrationSound" preload="auto">
+        <source src="{{ url_for('static', filename='audio/celebration.mp3') }}" type="audio/mpeg">
+    </audio>
+    <!-- Background music -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="{{ url_for('static', filename='audio/background.mp3') }}" type="audio/mpeg">
+    </audio>
+
     <nav class="main-nav glass-effect">
         <a href="{{ url_for('home') }}" class="nav-logo">
             <i class="fa-solid fa-heart"></i>
             Love Quiz
         </a>
         <div class="nav-links">
+            <!-- Music Toggle Button -->
+            <button class="sound-toggle-btn" onclick="toggleMusic()" title="Toggle background music">
+                <i class="fa-solid fa-music" id="musicIcon"></i>
+            </button>
+            <!-- Sound Toggle Button -->
+            <button class="sound-toggle-btn" onclick="toggleSound()" title="Toggle sound effects">
+                <i class="fa-solid fa-volume-high" id="soundIcon"></i>
+            </button>
             <a href="{{ url_for('learn') }}" class="nav-link">
                 <i class="fa-solid fa-book-open"></i>
                 Learn
@@ -86,5 +106,90 @@
     <main class="main-content">
         {% block content %}{% endblock %}
     </main>
+
+    <script>
+        // Sound management
+        let soundEnabled = localStorage.getItem('soundEnabled') !== 'false';
+
+        function updateSoundIcon() {
+            const icon = document.getElementById('soundIcon');
+            if (icon) {
+                icon.className = soundEnabled ? 'fa-solid fa-volume-high' : 'fa-solid fa-volume-xmark';
+            }
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            localStorage.setItem('soundEnabled', soundEnabled);
+            updateSoundIcon();
+        }
+
+        function playClickSound() {
+            if (soundEnabled) {
+                const sound = document.getElementById('clickSound');
+                if (sound) {
+                    sound.currentTime = 0;
+                    sound.play().catch(() => {});
+                }
+            }
+        }
+
+        function playCelebrationSound() {
+            if (soundEnabled) {
+                const sound = document.getElementById('celebrationSound');
+                if (sound) {
+                    sound.currentTime = 0;
+                    sound.play().catch(() => {});
+                }
+            }
+        }
+
+        // Initialize sound icon on page load
+        document.addEventListener('DOMContentLoaded', updateSoundIcon);
+
+        // Background music management
+        let musicEnabled = localStorage.getItem('musicEnabled') === 'true';
+        const bgMusic = document.getElementById('bgMusic');
+
+        function updateMusicIcon() {
+            const icon = document.getElementById('musicIcon');
+            if (icon) {
+                icon.className = musicEnabled ? 'fa-solid fa-music' : 'fa-solid fa-music music-off';
+                icon.style.opacity = musicEnabled ? '1' : '0.5';
+            }
+        }
+
+        function toggleMusic() {
+            musicEnabled = !musicEnabled;
+            localStorage.setItem('musicEnabled', musicEnabled);
+            updateMusicIcon();
+            if (musicEnabled) {
+                bgMusic.volume = 0.3;
+                bgMusic.play().catch(() => {});
+            } else {
+                bgMusic.pause();
+            }
+        }
+
+        // Initialize music on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateMusicIcon();
+            if (bgMusic) {
+                bgMusic.volume = 0.3;
+            }
+            // Auto-play music if enabled (requires user interaction first)
+            if (musicEnabled && bgMusic) {
+                bgMusic.play().catch(() => {});
+            }
+        });
+
+        // Start music on first user interaction if enabled
+        document.addEventListener('click', function initMusic() {
+            if (musicEnabled && bgMusic && bgMusic.paused) {
+                bgMusic.volume = 0.3;
+                bgMusic.play().catch(() => {});
+            }
+        }, { once: true });
+    </script>
 </body>
 </html>
