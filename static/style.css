@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Fredoka', sans-serif;
     background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
     min-height: 100vh;
     display: flex;
@@ -371,6 +371,234 @@ h1 {
     background: rgba(0, 0, 0, 0.05);
 }
 
+/* Cute Floating Kawaii GIFs */
+.quiz-stickers {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 50;
+    overflow: hidden;
+}
+
+.sticker {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    animation: floatBounce 3s ease-in-out infinite;
+}
+
+.sticker-1 {
+    top: 12%;
+    left: 2%;
+    animation-delay: 0s;
+}
+
+.sticker-2 {
+    top: 10%;
+    right: 2%;
+    animation-delay: 0.5s;
+    animation-duration: 3.5s;
+}
+
+.sticker-3 {
+    bottom: 25%;
+    left: 1%;
+    animation-delay: 1s;
+    animation-duration: 2.8s;
+}
+
+.sticker-4 {
+    bottom: 20%;
+    right: 1%;
+    animation-delay: 1.5s;
+    animation-duration: 3.2s;
+}
+
+@keyframes floatBounce {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-15px) scale(1.05);
+    }
+}
+
+/* Hide floating stickers on mobile only */
+@media (max-width: 600px) {
+    .quiz-stickers {
+        display: none;
+    }
+}
+
+/* Quiz Card Stickers */
+.quiz-container {
+    position: relative;
+    overflow: visible;
+}
+
+.quiz-sticker {
+    position: absolute;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.sticker-left {
+    bottom: 40px;
+    left: -100px;
+    width: 130px;
+    height: 130px;
+}
+
+.kawaii-gif {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: gifBounce 2s ease-in-out infinite;
+}
+
+@keyframes gifBounce {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-10px) scale(1.05);
+    }
+}
+
+/* Cute CSS Character */
+.cute-character {
+    animation: characterBounce 2s ease-in-out infinite;
+}
+
+.character-body {
+    width: 70px;
+    height: 80px;
+    background: #f5f5f5;
+    border-radius: 35px 35px 25px 25px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.character-face {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 40px;
+}
+
+.eye {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #333;
+    border-radius: 50%;
+    top: 10px;
+}
+
+.left-eye {
+    left: 12px;
+}
+
+.right-eye {
+    right: 12px;
+}
+
+.mouth {
+    position: absolute;
+    width: 12px;
+    height: 6px;
+    border: 2px solid #333;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.blush {
+    position: absolute;
+    width: 10px;
+    height: 6px;
+    background: #ffb6c1;
+    border-radius: 50%;
+    top: 18px;
+    left: 2px;
+    opacity: 0.7;
+}
+
+.right-blush {
+    left: auto;
+    right: 2px;
+}
+
+.character-arm {
+    position: absolute;
+    right: -15px;
+    top: 30px;
+    font-size: 16px;
+    animation: waveArm 1s ease-in-out infinite;
+}
+
+@keyframes characterBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes waveArm {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+}
+
+.sticker-right {
+    top: 30px;
+    right: -20px;
+}
+
+.hearts-pattern {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    animation: heartBeat 1.5s ease-in-out infinite;
+}
+
+.hearts-pattern i {
+    color: #ff6b8a;
+    font-size: 14px;
+    margin: 0 1px;
+    display: inline-block;
+}
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Hide quiz stickers on small screens */
+@media (max-width: 650px) {
+    .quiz-sticker {
+        display: none;
+    }
+}
+
 /* Quiz Page */
 .progress-bar {
     background: #f0f0f0;
@@ -412,6 +640,7 @@ h1 {
     display: flex;
     align-items: center;
     gap: 16px;
+    width: 100%;
     background: #f8f9fa;
     border: 2px solid #e9ecef;
     padding: 20px 24px;
@@ -1567,15 +1796,39 @@ h1 {
 
 /* Hero Visual */
 .hero-visual {
-    flex: 0 0 380px;
+    flex: 0 0 580px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.hero-cute-cat {
+    flex-shrink: 0;
+    background: white;
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    margin-left: 40px;
+}
+
+.cute-cat-img {
+    width: 320px;
+    height: auto;
+    display: block;
+    animation: catBounce 2s ease-in-out infinite;
+}
+
+@keyframes catBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 .hero-card-stack {
     position: relative;
-    width: 320px;
+    width: 280px;
     height: 360px;
+    flex-shrink: 0;
 }
 
 .hero-float-card {
@@ -2284,6 +2537,10 @@ h1 {
         display: none;
     }
 
+    .hero-cute-cat {
+        display: none;
+    }
+
     .stats-bar {
         gap: 20px;
         flex-wrap: wrap;
@@ -2436,4 +2693,345 @@ h1 {
 
 .playlist-card:hover .playlist-link-icon {
     color: #1DB954;
+}
+
+/* ========== MINIMAL LANDING PAGE (Ciaragan-inspired) ========== */
+.landing-minimal {
+    width: 100%;
+    min-height: 100vh;
+    background: #FFFAF5;
+}
+
+/* Hero Minimal */
+.hero-minimal {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px;
+    text-align: center;
+}
+
+.hero-minimal-content {
+    max-width: 600px;
+}
+
+.hero-tagline {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #0A7D5A;
+    margin-bottom: 24px;
+    font-weight: 500;
+}
+
+.hero-title-minimal {
+    font-size: 56px;
+    font-weight: 400;
+    color: #1a1a1a;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+}
+
+.hero-accent {
+    color: #0A7D5A;
+    font-style: italic;
+}
+
+.hero-desc-minimal {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 48px;
+    font-weight: 400;
+}
+
+.hero-form-minimal {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.hero-welcome-minimal {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.hero-welcome-minimal strong {
+    color: #0A7D5A;
+}
+
+.input-minimal,
+.select-minimal {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 15px;
+    font-family: inherit;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    background: white;
+    color: #333;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.input-minimal:focus,
+.select-minimal:focus {
+    outline: none;
+    border-color: #0A7D5A;
+    box-shadow: 0 0 0 3px rgba(10, 125, 90, 0.1);
+}
+
+.input-minimal::placeholder {
+    color: #999;
+}
+
+.select-minimal {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23555' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    padding-right: 40px;
+}
+
+.btn-minimal {
+    padding: 16px 32px;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border: 2px solid #0A7D5A;
+    border-radius: 30px;
+    background: #0A7D5A;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-minimal:hover {
+    background: #065c42;
+    border-color: #065c42;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: transparent;
+    color: #0A7D5A;
+}
+
+.btn-outline:hover {
+    background: #0A7D5A;
+    color: white;
+}
+
+/* Languages Preview Pills */
+.languages-preview {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 40px 24px;
+    background: #FFFAF5;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.language-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 30px;
+    font-size: 13px;
+    color: #333;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.language-pill:hover {
+    border-color: #0A7D5A;
+    color: #0A7D5A;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(10, 125, 90, 0.1);
+}
+
+.pill-icon {
+    color: #0A7D5A;
+    font-size: 14px;
+}
+
+/* About Minimal Section */
+.about-minimal {
+    padding: 100px 24px;
+    background: white;
+}
+
+.about-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.section-title-minimal {
+    font-size: 36px;
+    font-weight: 400;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.section-title-minimal.center {
+    text-align: center;
+}
+
+.about-desc {
+    font-size: 17px;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 24px;
+}
+
+.link-minimal {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #0A7D5A;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: gap 0.3s;
+}
+
+.link-minimal:hover {
+    gap: 12px;
+}
+
+.about-stats {
+    display: flex;
+    gap: 40px;
+}
+
+.stat-minimal {
+    text-align: center;
+}
+
+.stat-num {
+    display: block;
+    font-size: 48px;
+    font-weight: 300;
+    color: #0A7D5A;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.stat-txt {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #888;
+}
+
+/* Process Minimal Section */
+.process-minimal {
+    padding: 100px 24px;
+    background: #FFFAF5;
+}
+
+.process-steps {
+    max-width: 900px;
+    margin: 60px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.process-step {
+    text-align: center;
+    padding: 40px 24px;
+}
+
+.step-num {
+    display: block;
+    font-size: 14px;
+    color: #0A7D5A;
+    font-weight: 500;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.process-step h3 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+}
+
+.process-step p {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* CTA Minimal Section */
+.cta-minimal {
+    padding: 100px 24px;
+    text-align: center;
+    background: white;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.cta-text {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 32px;
+    font-weight: 400;
+}
+
+/* Minimal Landing Responsive */
+@media (max-width: 768px) {
+    .hero-title-minimal {
+        font-size: 36px;
+    }
+
+    .hero-desc-minimal {
+        font-size: 16px;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        text-align: center;
+    }
+
+    .about-stats {
+        justify-content: center;
+    }
+
+    .process-steps {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .languages-preview {
+        gap: 8px;
+    }
+
+    .language-pill {
+        padding: 10px 16px;
+        font-size: 12px;
+    }
 }
